@@ -7,7 +7,7 @@ import { HomeComponent } from '@src/app/home/home.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CoreModule } from '@core/core.module';
 import { PipesModule } from '@shared/pipes/pipes.module';
-import { TnsComponentsModuleTns } from '@shared/tns-components/tns-components.module.tns';
+import { ComponentsModuleTns } from '@shared/components/components.module.tns';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -25,7 +25,7 @@ import { TnsComponentsModuleTns } from '@shared/tns-components/tns-components.mo
     NativeScriptModule,
     AppRoutingModule,
     CoreModule,
-    TnsComponentsModuleTns,
+    ComponentsModuleTns,
     PipesModule,
     TranslateModule.forRoot(),
   ],
