@@ -3,11 +3,22 @@
   "compilerOptions": {
     "module": "es2015",
     "moduleResolution": "node",
-    "skipLibCheck": true,
     "paths": {
       "@src/*": [
         "src/*.tns.ts",
         "src/*.ts"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
       ]
     }
   },

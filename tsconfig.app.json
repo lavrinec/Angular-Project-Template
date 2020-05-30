@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "module": "es2015",
     "types": [],
     "paths": {
       "@src/*": [
@@ -11,8 +12,6 @@
     }
   },
   "files": [
-    "src/main.ts",
-    "src/polyfills.ts",
     "src/main.ts",
     "src/polyfills.ts"
   ]
