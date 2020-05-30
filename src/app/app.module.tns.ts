@@ -5,9 +5,9 @@ import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
 import { HomeComponent } from '@src/app/home/home.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { TnsComponentsModuleTns } from '@shared/tns-components/tns-components.module.tns';
-import { CoreModuleTns } from '@core/core.module.tns';
-import { PipesModuleTns } from '@shared/pipes/pipes.module.tns';
+import { CoreModule } from '@core/core.module';
+import { PipesModule } from '@shared/pipes/pipes.module';
+import { ComponentsModuleTns } from '@shared/components/components.module.tns';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -24,9 +24,9 @@ import { PipesModuleTns } from '@shared/pipes/pipes.module.tns';
   imports: [
     NativeScriptModule,
     AppRoutingModule,
-    CoreModuleTns,
-    TnsComponentsModuleTns,
-    PipesModuleTns,
+    CoreModule,
+    ComponentsModuleTns,
+    PipesModule,
     TranslateModule.forRoot(),
   ],
   providers: [
