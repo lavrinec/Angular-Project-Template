@@ -8,6 +8,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CoreModule } from '@src/app/core/core.module';
 import { ComponentsModule } from '@src/app/shared/components/components.module';
 import { PipesModule } from '@src/app/shared/pipes/pipes.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { PipesModule } from '@src/app/shared/pipes/pipes.module';
     ComponentsModule,
     PipesModule,
     TranslateModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     TranslateService
