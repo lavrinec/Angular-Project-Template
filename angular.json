@@ -54,6 +54,34 @@
               "buildOptimizer": true,
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "electron": {
+              "baseHref": "",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.electron.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "serviceWorker": true
+            },
+            "electronDev": {
+              "baseHref": "",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.electron-dev.ts"
+                }
+              ]
             }
           }
         },
@@ -65,6 +93,12 @@
           "configurations": {
             "production": {
               "browserTarget": "project-template:build:production"
+            },
+            "electron": {
+              "browserTarget": "project-template:build:electron"
+            },
+            "electronDev": {
+              "browserTarget": "project-template:build:electronDev"
             }
           }
         },

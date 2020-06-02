@@ -1,0 +1,50 @@
+{
+  "productName": "project-template",
+  "directories": {
+    "output": "release/"
+  },
+  "files": [
+    "**/*",
+    "!**/*.ts",
+    "!*.js",
+    "!**/*.bat",
+    "!*.code-workspace",
+    "!LICENSE.md",
+    "!package.json",
+    "!package-lock.json",
+    "!src/",
+    "!e2e/",
+    "!hooks/",
+    "!coverage/",
+    "!doc/",
+    "!download/",
+    "!angular.json",
+    "!_config.yml",
+    "!karma.conf.js",
+    "!tsconfig.json",
+    "!tslint.json"
+  ],
+  "win": {
+    "icon": "www/assets/icons",
+    "target": [
+      "nsis"
+    ]
+  },
+  "mac": {
+    "icon": "www/assets/icons",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "www/assets/icons",
+    "target": [
+      "AppImage"
+    ]
+  },
+  "publish": [{
+    "provider": "generic",
+    "url": "http://192.168.50.49:8080"
+  }],
+  "appId": "com.demo.app"
+}
