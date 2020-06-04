@@ -1,0 +1,89 @@
+<div class="m-login-component h-100 w-100">
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column" style="max-width: 400px; min-width: 170px; width: 90%; margin-top: -200px">
+            <div class="bg-white shadow" style="border-radius: 10px;">
+                <div class="h-100 w-100 d-flex flex-column p-4">
+                    <!-- username -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user fa-fw"></i></span>
+                                </div>
+                                <input type="text" class="form-control" [(ngModel)]="username" placeholder="Uporabniško ime" aria-label="Username" aria-describedby="basic-addon1" [disabled]="authInProgress">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- password -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon2"><i class="fa fa-key fa-fw"></i></span>
+                                </div>
+                                <input type="password" class="form-control" [(ngModel)]="password" placeholder="Geslo" aria-label="Username" aria-describedby="basic-addon2" [disabled]="authInProgress">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- auth message -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger border border-danger d-flex" role="alert" *ngIf="authMessage && authMessage.length > 0" style="border-radius: .25rem !important;">
+                                <i class="fa fa-ban fa-fw mx-1 mt-1" aria-hidden="true"></i>
+                                <span> {{authMessage}}</span>
+                            </div>
+                        </div>
+                    </div>
+<!--                    &lt;!&ndash; support row &ndash;&gt;-->
+<!--                    <div class="row mb-2">-->
+<!--                        <div class="col-12">-->
+<!--                            <a style="color: #0873b1; cursor: pointer; font-size: 13px" [routerLink]="['/reset-password']">Pozabljeno geslo</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <!-- buttons -->
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-success btn-sm btn-block" (click)="login(username, password)" [disabled]="authInProgress">
+                                <span *ngIf="!authInProgress">Prijava</span>
+                                <i class="fa fa-refresh fa-spin fa-1x fa-fw" *ngIf="authInProgress"></i>
+                            </button>
+                        </div>
+                    </div>
+
+<!--                    <div class="row mt-3">-->
+<!--                        <div class="col-12 d-flex justify-content-center">-->
+<!--                            <small style="color: #999; font-size: 12px">Dodatne možnosti prijave</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; MSAL &ndash;&gt;-->
+<!--                    <div class="row mt-3">-->
+<!--                        <div class="col-12 d-flex justify-content-center">-->
+<!--                            <div class="d-inline-block">-->
+<!--                                &lt;!&ndash; login with microsoft button &ndash;&gt;-->
+<!--                                <div class="msal-login-button d-flex align-items-center" (click)="loginMSAL()">-->
+<!--                                    <div class="icon-wrapper">-->
+<!--                                        <img src="assets/img/ms-symbollockup_mssymbol_19.png">-->
+<!--                                    </div>-->
+<!--                                    <div class="text-wrapper">-->
+<!--                                        <span>Sign in with Microsoft </span>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; nastavitve &ndash;&gt;-->
+<!--                    <div class="row mt-5">-->
+<!--                        <div class="col-12 d-flex justify-content-center">-->
+<!--                          <span style="color: #bbb; font-size: 10px">-->
+<!--                            Manto Insight-->
+<!--                            <a style="color: #0873b1; cursor: pointer" [routerLink]="['/settings']">Nastavitve</a>-->
+<!--                          </span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

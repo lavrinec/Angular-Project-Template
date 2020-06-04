@@ -10,6 +10,11 @@ import { ComponentsModule } from '@src/app/shared/components/components.module';
 import { PipesModule } from '@src/app/shared/pipes/pipes.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LoginModule } from '@src/app/login/login.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HeaderInterceptor} from '@src/app/core/interceptors/header.interceptor';
+import {BaseUrlInterceptor} from '@src/app/core/interceptors/base-url.interceptor';
+import {ContactsModule} from '@src/app/contacts/contacts.module';
 
 
 @NgModule({
@@ -19,15 +24,21 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     CoreModule,
     ComponentsModule,
     PipesModule,
     TranslateModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    LoginModule,
+    // testing
+    ContactsModule
   ],
   providers: [
-    TranslateService
+    TranslateService,
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

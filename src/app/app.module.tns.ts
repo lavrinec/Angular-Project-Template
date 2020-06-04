@@ -8,6 +8,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ComponentsModuleTns } from '@shared/components/components.module.tns';
 import { CoreModuleTns } from '@core/core.module.tns';
 import { PipesModuleTns } from '@shared/pipes/pipes.module.tns';
+import {LoginModuleTns} from "@src/app/login/login.module";
+import { ContactsModuleTns } from './contacts/contacts.module.tns';
 
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
@@ -28,6 +30,9 @@ import { PipesModuleTns } from '@shared/pipes/pipes.module.tns';
     ComponentsModuleTns,
     PipesModuleTns,
     TranslateModule.forRoot(),
+    LoginModuleTns,
+      // testing
+    ContactsModuleTns
   ],
   providers: [
     TranslateService
