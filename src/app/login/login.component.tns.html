@@ -1,1 +1,9 @@
-<Button text="login works!" class="btn btn-primary"></Button>
+<ActionBar [title]=""></ActionBar>
+<StackLayout  class="p-20" width="100%"  justifyContent ="center" verticalAlignment="middle">
+    <Label  text="Manto Insight" class="h1 text-center" textWrap="true"></Label>
+    <Label  [text]="username" class="h1 text-center" textWrap="true"></Label>
+    <TextField height="100px" hint="username" [(ngModel)]="username" autocorrect="false" autocapitalizationType="none" class="input input-border" [disabled]="authInProgress"></TextField>
+    <TextField height="100px" hint="password" autocorrect="false" [(ngModel)]="password" autocapitalizationType="none" secure="true" class="input input-border" [disabled]="authInProgress"></TextField>
+    <Button text="login works!" class="btn btn-primary" (tap)="login(username,password)" [disabled]="authInProgress" ></Button>
+    <button text = "klikni me" (tap)="logout()"></button>
+</StackLayout>

@@ -15,13 +15,9 @@ export class AuthService {
   ) { }
 
   login(username: string, password: string) {
+      console.log('sem v login metodi');
     const queryParams = '?username=' + username + '&password=' + password;
     const headers = new HttpHeaders().append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.httpClient.post('/connect/token' + queryParams, null, { headers: headers}).pipe(tap(
-        response => {
-          const expirationDate = moment().add(60, 'days').toDate();
-          this.authStateService.setInsightToken(response['access_token'], expirationDate);
-        }
-    ));
+    return this.httpClient.post('/connect/token' + queryParams, null, { headers: headers});
   }
 }

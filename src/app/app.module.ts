@@ -17,6 +17,7 @@ import {BaseUrlInterceptor} from '@src/app/core/interceptors/base-url.intercepto
 import {ContactsModule} from '@src/app/contacts/contacts.module';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

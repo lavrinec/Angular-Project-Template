@@ -16,7 +16,8 @@ import {BaseUrlInterceptor} from '@core/interceptors/base-url.interceptor';
 import {HeaderInterceptor} from '@core/interceptors/header.interceptor';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
-// import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+//import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import {HeaderInterceptor} from '@core/interceptors/header.interceptor';
     NativeScriptHttpClientModule,
     LoginModuleTns,
     // testing
-    ContactsModuleTns
+    ContactsModuleTns,
   ],
   providers: [
     TranslateService,
