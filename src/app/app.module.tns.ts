@@ -14,6 +14,7 @@ import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BaseUrlInterceptor} from '@core/interceptors/base-url.interceptor';
 import {HeaderInterceptor} from '@core/interceptors/header.interceptor';
+import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 //import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -35,6 +36,7 @@ import {HeaderInterceptor} from '@core/interceptors/header.interceptor';
     LoginModuleTns,
     // testing
     ContactsModuleTns,
+    NativeScriptUISideDrawerModule,
   ],
   providers: [
     TranslateService,

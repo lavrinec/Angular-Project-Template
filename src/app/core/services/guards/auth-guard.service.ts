@@ -13,13 +13,13 @@ export class AuthGuardService implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const authObj = this.authStateService.getAuthObject();
-    if (!authObj.insightToken && !authObj.MSALToken) {
+    if (!this.authStateService.getIsLoggedIn()) {
+      console.log('Not logged in');
       // set initial redirect state
       this.authStateService.initialRedirectUrl = state.url.split('?')[0];
       this.authStateService.initialQueryParams = route.queryParams;
       // navigate to login
-      this.router.navigate(['login']);
+      void this.router.navigate(['login']);
       return false;
     }
     return true;
