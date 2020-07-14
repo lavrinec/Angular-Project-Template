@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import { environment } from '@src/environments/environment';
-import {
-  getString,
-  setString,
-  remove
-} from 'tns-core-modules/application-settings';
+// import {
+//   getString,
+//   setString,
+//   remove
+// } from 'tns-core-modules/application-settings';
 import { Router } from '@angular/router';
 
 class AuthModel {
@@ -61,7 +61,7 @@ export class AuthStateService {
     if (!environment.nativeScript) {
       this.cookieService.set(name, value, expirationDate);
     } else {
-      setString(name, value);
+      // setString(name, value);
     }
   }
 
@@ -69,7 +69,9 @@ export class AuthStateService {
     if (!environment.nativeScript) {
       return this.cookieService.get(name);
     } else {
-      return getString(name);
+      // TODO fix quick as possible
+      // return getString(name);
+      return 'abc';
     }
   }
 
@@ -77,7 +79,7 @@ export class AuthStateService {
     if (!environment.nativeScript) {
       return this.cookieService.delete(name);
     } else {
-      return remove(name);
+      // return remove(name);
     }
   }
 }

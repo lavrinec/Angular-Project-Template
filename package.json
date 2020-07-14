@@ -79,7 +79,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "moment": "^2.26.0",
-    "nativescript-angular": "~8.20.0",
+    "nativescript-angular": "~8.21.0",
     "nativescript-dev-webpack": "~1.4.0",
     "ngx-cookie-service": "^3.0.4",
     "node-sass": "^4.7.1",

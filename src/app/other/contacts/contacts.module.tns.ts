@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule } from 'nativescript-angular/common';
-import { ContactsComponent } from '@src/app/contacts/contacts.component';
+import { ContactsComponent } from '@src/app/other/contacts/contacts.component';
 
 
 
