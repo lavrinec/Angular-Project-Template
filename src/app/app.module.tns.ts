@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
+import { NativeScriptModule } from '@nativescript/angular';
 
 import { AppRoutingModule } from '@src/app/app-routing.module.tns';
 import { AppComponent } from '@src/app/app.component';
