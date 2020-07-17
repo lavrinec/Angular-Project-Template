@@ -10,13 +10,13 @@ import { CoreModuleTns } from '@core/core.module.tns';
 import { PipesModuleTns } from '@shared/pipes/pipes.module.tns';
 import {LoginModuleTns} from '@src/app/other/login/login.module';
 import { ContactsModuleTns } from '@src/app/other/contacts/contacts.module.tns';
-import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
+import { NativeScriptHttpClientModule } from '@nativescript/angular';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {BaseUrlInterceptor} from '@core/interceptors/base-url.interceptor';
 import {HeaderInterceptor} from '@core/interceptors/header.interceptor';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
 import { DashboardComponent } from '@src/app/other/dashboard/dashboard.component';
-import { NativeScriptCommonModule } from '@nativescript/angular/common';
+import { NativeScriptCommonModule } from '@nativescript/angular';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';

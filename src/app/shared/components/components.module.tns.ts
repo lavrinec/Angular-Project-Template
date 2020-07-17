@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MobileMenuComponent } from '@src/app/shared/components/mobile-menu/mobile-menu.component';
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
 import { Helper } from '@core/services/utils/helper.tns';
-import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
+import { NativeScriptModule } from '@nativescript/angular';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
   ],
   imports: [
     NativeScriptModule,
-    NativeScriptUISideDrawerModule
+    //NativeScriptUISideDrawerModule
   ],
  exports: [MobileMenuComponent]
 })

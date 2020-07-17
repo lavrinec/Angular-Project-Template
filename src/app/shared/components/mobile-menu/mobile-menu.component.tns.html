@@ -1,59 +1,59 @@
-<!--<ActionBar>-->
-<!--    &lt;!&ndash;-->
-<!--    Use the NavigationButton as a side-drawer button in Android-->
-<!--    because ActionItems are shown on the right side of the ActionBar-->
-<!--    &ndash;&gt;-->
-<!--    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onTap()"></NavigationButton>-->
-<!--    &lt;!&ndash;-->
-<!--    Use the ActionItem for IOS with position set to left. Using the-->
-<!--    NavigationButton as a side-drawer button in iOS is not possible,-->
-<!--    because its function is to always navigate back in the application.-->
-<!--    &ndash;&gt;-->
-<!--    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onTap()"-->
-<!--                ios.position="left">-->
-<!--    </ActionItem>-->
-<!--</ActionBar>-->
+<!--&lt;!&ndash;<ActionBar>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;&ndash;&gt;-->
+<!--&lt;!&ndash;    Use the NavigationButton as a side-drawer button in Android&ndash;&gt;-->
+<!--&lt;!&ndash;    because ActionItems are shown on the right side of the ActionBar&ndash;&gt;-->
+<!--&lt;!&ndash;    &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onTap()"></NavigationButton>&ndash;&gt;-->
+<!--&lt;!&ndash;    &lt;!&ndash;&ndash;&gt;-->
+<!--&lt;!&ndash;    Use the ActionItem for IOS with position set to left. Using the&ndash;&gt;-->
+<!--&lt;!&ndash;    NavigationButton as a side-drawer button in iOS is not possible,&ndash;&gt;-->
+<!--&lt;!&ndash;    because its function is to always navigate back in the application.&ndash;&gt;-->
+<!--&lt;!&ndash;    &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onTap()"&ndash;&gt;-->
+<!--&lt;!&ndash;                ios.position="left">&ndash;&gt;-->
+<!--&lt;!&ndash;    </ActionItem>&ndash;&gt;-->
+<!--&lt;!&ndash;</ActionBar>&ndash;&gt;-->
 
-<!--<Label text="Welcome to mobil component!" class="h1 text-center" textWrap="true"></Label>-->
+<!--&lt;!&ndash;<Label text="Welcome to mobil component!" class="h1 text-center" textWrap="true"></Label>&ndash;&gt;-->
 
-<RadSideDrawer [drawerTransition]="sideDrawerTransition">
-    <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
-        <StackLayout row="0" class="nt-drawer__header">
-            <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
-            <Label class="nt-drawer__header-brand" text="User Name"></Label>
-            <Label class="nt-drawer__header-footnote" text="username@mail.com"></Label>
-        </StackLayout>
+<!--<RadSideDrawer [drawerTransition]="sideDrawerTransition">-->
+<!--    <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">-->
+<!--        <StackLayout row="0" class="nt-drawer__header">-->
+<!--            <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>-->
+<!--            <Label class="nt-drawer__header-brand" text="User Name"></Label>-->
+<!--            <Label class="nt-drawer__header-footnote" text="username@mail.com"></Label>-->
+<!--        </StackLayout>-->
 
-        <ScrollView row="1" class="nt-drawer__body">
-            <StackLayout>
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
-                    <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
-                    <Label col="1" text="Home" class="p-r-10"></Label>
-                </GridLayout>
+<!--        <ScrollView row="1" class="nt-drawer__body">-->
+<!--            <StackLayout>-->
+<!--                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">-->
+<!--                    <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>-->
+<!--                    <Label col="1" text="Home" class="p-r-10"></Label>-->
+<!--                </GridLayout>-->
 
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/browse')" (tap)="onNavItemTap('/browse')">
-                    <Label col="0" text="&#xf1ea;" class="nt-icon far"></Label>
-                    <Label col="1" text="Browse" class="p-r-10"></Label>
-                </GridLayout>
+<!--                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/browse')" (tap)="onNavItemTap('/browse')">-->
+<!--                    <Label col="0" text="&#xf1ea;" class="nt-icon far"></Label>-->
+<!--                    <Label col="1" text="Browse" class="p-r-10"></Label>-->
+<!--                </GridLayout>-->
 
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/search')" (tap)="onNavItemTap('/search')">
-                    <Label col="0" text="&#xf002;" class="nt-icon fas"></Label>
-                    <Label col="1" text="Search" class="p-r-10"></Label>
-                </GridLayout>
+<!--                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/search')" (tap)="onNavItemTap('/search')">-->
+<!--                    <Label col="0" text="&#xf002;" class="nt-icon fas"></Label>-->
+<!--                    <Label col="1" text="Search" class="p-r-10"></Label>-->
+<!--                </GridLayout>-->
 
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">
-                    <Label col="0" text="&#xf005;" class="nt-icon fas"></Label>
-                    <Label col="1" text="Featured" class="p-r-10"></Label>
-                </GridLayout>
+<!--                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/featured')" (tap)="onNavItemTap('/featured')">-->
+<!--                    <Label col="0" text="&#xf005;" class="nt-icon fas"></Label>-->
+<!--                    <Label col="1" text="Featured" class="p-r-10"></Label>-->
+<!--                </GridLayout>-->
 
-                <StackLayout class="hr"></StackLayout>
+<!--                <StackLayout class="hr"></StackLayout>-->
 
-                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/settings')" (tap)="onNavItemTap('/settings')">
-                    <Label col="0" text="&#xf013;" class="nt-icon fas"></Label>
-                    <Label col="1" text="Settings" class="p-r-10"></Label>
-                </GridLayout>
-            </StackLayout>
-        </ScrollView>
-    </GridLayout>
-<!--    <page-router-outlet tkMainContent></page-router-outlet>-->
-</RadSideDrawer>
+<!--                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/settings')" (tap)="onNavItemTap('/settings')">-->
+<!--                    <Label col="0" text="&#xf013;" class="nt-icon fas"></Label>-->
+<!--                    <Label col="1" text="Settings" class="p-r-10"></Label>-->
+<!--                </GridLayout>-->
+<!--            </StackLayout>-->
+<!--        </ScrollView>-->
+<!--    </GridLayout>-->
+<!--&lt;!&ndash;    <page-router-outlet tkMainContent></page-router-outlet>&ndash;&gt;-->
+<!--</RadSideDrawer>-->

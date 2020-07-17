@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {AuthService} from '@core/services/api/auth.service';
-import {Router} from '@angular/router';
-import {AuthStateService} from '@core/services/state/auth-state.service';
+import { AuthService } from '@core/services/api/auth.service';
+import { Router } from '@angular/router';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { environment } from '@env/environment';
+import { AuthStateService } from '@core/services/state/auth-state.service';
 
 @Component({
   selector: 'app-login',
