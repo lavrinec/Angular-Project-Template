@@ -3,23 +3,34 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from '@src/app/home/home.component';
 import { ContatcsComponent } from '@src/app/contatcs/contatcs.component';
 import { SettingsComponent } from '@src/app/settings/settings.component';
+import { LoginComponent } from '@src/app/login/login.component';
+import { NonAuthGuardService } from '@src/app/core/services/guards/non-auth-guard.service';
+import { AuthGuardService as AuthGuard } from '@src/app/core/services/guards/auth-guard.service';
 
 export const routes: Routes = [
   {
       path: '',
-      redirectTo: '/home',
+      redirectTo: '/login',
       pathMatch: 'full',
   },
   {
       path: 'home',
       component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
-        path: 'contacts',
-        component: ContatcsComponent,
+       path: 'contacts',
+       component: ContatcsComponent,
+    canActivate: [AuthGuard],
   },
-    {
-        path: 'settings',
-        component: SettingsComponent,
-    },
+  {
+       path: 'settings',
+       component: SettingsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [NonAuthGuardService]
+  },
 ];

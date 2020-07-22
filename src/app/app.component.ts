@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { HelperService } from '@src/app/helper.service';
+import { HelperService } from '@src/app/core/services/utils/helper.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   }
   // constructor(private router: Router, private routerExtensions: RouterExtensions) {
-    // Use the component constructor to inject services.
+    // Use the component constructor to inject core.
 
 
   ngOnInit(): void {

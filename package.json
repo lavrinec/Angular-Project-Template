@@ -87,6 +87,8 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "wait-on": "^5.0.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "moment": "^2.26.0",
+    "ngx-cookie-service": "^3.0.4"
   }
 }

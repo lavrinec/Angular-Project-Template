@@ -1,1 +1,8 @@
-<Button text="login works!" class="btn btn-primary"></Button>
+<StackLayout appHideActionBar  class=""   justifyContent ="center" verticalAlignment="middle">
+    <Label  text="Manto Insight" class="h1 text-center" textWrap="true"></Label>
+
+    <TextField height="100px" hint="username" [(ngModel)]="username" autocorrect="false" autocapitalizationType="none" class="input input-border" [disabled]="authInProgress"></TextField>
+    <TextField height="100px" hint="password" autocorrect="false" [(ngModel)]="password" autocapitalizationType="none" secure="true" class="input input-border" [disabled]="authInProgress"></TextField>
+    <Button text="Sing In" class="btn btn-primary" style="background-color: #008CBA; color: white; font-weight: bold;" (tap)="login(username,password)" [disabled]="authInProgress" ></Button>
+    <button text = "klikni me" (tap)="logout()"></button>
+</StackLayout>

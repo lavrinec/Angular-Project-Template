@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HelperService } from '@src/app/helper.service';
+import { HelperService } from '@src/app/core/services/utils/helper.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
