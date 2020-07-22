@@ -8,7 +8,7 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.sassprojectangular10" 
+    applicationId = "org.nativescript.sassproject" 
     
     //override supported platforms
     // ndk {

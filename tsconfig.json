@@ -1,41 +1,32 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
-    "paths": {
-      "@src/*": [
-        "src/*.android.ts",
-        "src/*.ios.ts",
-        "src/*.tns.ts",
-        "src/*.web.ts",
-        "src/*"
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "moduleResolution": "node",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "skipLibCheck": true,
+      "target": "es5",
+      "typeRoots": [
+          "node_modules/@types"
       ],
-      "@env/*": [
-        "src/environments/*"
+      "lib": [
+          "es2017",
+          "dom",
+          "es6",
+          "es2015.iterable"
       ],
-      "@core/*": [
-        "src/app/core/*"
-      ],
-      "@shared/*": [
-        "src/app/shared/*"
-      ]
-    }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+      "baseUrl": ".",
+      "paths": {
+          "@src/*": [
+              "src/*.android.ts",
+              "src/*.ios.ts",
+              "src/*.tns.ts",
+              "src/*.web.ts",
+              "src/*.ts"
+          ]
+      }
   }
 }
