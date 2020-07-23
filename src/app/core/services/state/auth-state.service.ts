@@ -70,7 +70,7 @@ export class AuthStateService {
       return this.cookieService.get(name);
     } else {
       // TODO fix quick as possible
-      // return console.log('getcookie retunr',this.helper.getStringSettings(name));
+      console.log('getcookie retunr',this.helper.getStringSettings(name));
       return this.helper.getStringSettings(name);
       // return 'abc';
     }

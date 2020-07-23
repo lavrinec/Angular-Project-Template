@@ -7,7 +7,6 @@ import { HomeComponent } from '@src/app/home/home.component';
 import { ContatcsComponent } from '@src/app/contatcs/contatcs.component';
 import { SettingsComponent } from '@src/app/settings/settings.component';
 import { LoginComponent } from '@src/app/login/login.component';
-import { environment } from '@src/environments/environment';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.interceptor';
 import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor';

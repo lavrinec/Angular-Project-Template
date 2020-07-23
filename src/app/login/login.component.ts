@@ -11,8 +11,8 @@ import { HelperService } from '@src/app/core/services/utils/helper.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  username = 'sebastjanm';
-  password = 'MamaTepeRadiator123!';
+  username = '';
+  password = '';
   authInProgress = false;
   authMessage = [];
   private unsubscribe$ = new Subject();

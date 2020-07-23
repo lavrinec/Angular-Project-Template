@@ -46,9 +46,9 @@ export class HelperService implements OnInit {
     // console.log('service: kliknil na gumbek side drawer', <RadSideDrawer>app.getRootView());
     sideDrawer.showDrawer();
   }
-  getStringSettings(name) {
-    getString(name);
+  getStringSettings(name): string {
     console.log('nazaj z settingov get cookie', getString(name));
+    return getString(name);
   }
   setStringSettings(name, value) {
     console.log('set', value);
