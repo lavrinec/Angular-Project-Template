@@ -60,9 +60,4 @@ export class LoginComponent implements OnInit, OnDestroy {
       void this.router.navigate(['home'], { replaceUrl: true });
     }
   }
-  logout() {
-    console.log(this.helper.getAllKeysSettings());
-    console.log('Token', this.helper.getStringSettings('token'));
-  }
-
 }

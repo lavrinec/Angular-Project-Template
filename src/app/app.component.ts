@@ -32,4 +32,7 @@ export class AppComponent implements OnInit {
   isComponentSelected(url: string): boolean {
     return this._activatedUrl === url;
   }
+  onSideBarToggle(event) {
+    this.helper.onDrawerButtonTap();
+  }
 }
