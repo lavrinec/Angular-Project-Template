@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
+import { environment } from '@src/environments/environment';
 
 
 @Component({
@@ -11,9 +12,18 @@ import { HelperService } from '@src/app/core/services/utils/helper.service';
 })
 export class AppComponent implements OnInit {
   private _activatedUrl: string;
+  private location: string;
+  locationArray = [];
   // private _sideDrawerTransition: DrawerTransitionBase;
-  constructor( private helper: HelperService, private router: Router) {
-
+  constructor( private helper: HelperService, public router: Router) {
+    console.log(this.router);
+    // if (!environment.nativeScript && window) {
+    //   try {
+    //     this.location = window.location.href;
+    //     this.locationArray = this.location.split('/');
+    //     console.log('aaaa', this.location);
+    //   } catch (e) {}
+    // }
   }
   // constructor(private router: Router, private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject core.

@@ -37,12 +37,19 @@ export class HelperService {
     // </script>
 
     const sideBarElement: HTMLElement = document.getElementById('sidebar');
-
-    sideBarElement.classList.add('active');
+    if (sideBarElement.classList.contains('active')) {
+      sideBarElement.classList.remove('active');
+    } else {
+      sideBarElement.classList.add('active');
+    }
 
     const overlayElement: HTMLElement = <HTMLElement>document.getElementsByClassName('overlay')[0];
-    console.log(overlayElement);
-    overlayElement.classList.add('active');
+    if (overlayElement.classList.contains('active')) {
+      overlayElement.classList.remove('active');
+    } else {
+      overlayElement.classList.add('active');
+    }
+
 
     // document.querySelector('a[aria-expanded=true]').
 

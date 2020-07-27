@@ -2,7 +2,7 @@
 <div class="wrapper">
 
     <!-- Sidebar -->
-    <nav id="sidebar">
+    <nav id="sidebar" class="active" *ngIf="!router.url.split('/').includes('login')">
         <div class="sidebar-header">
             <h3>Bootstrap Sidebar</h3>
         </div>
@@ -50,8 +50,8 @@
     </nav>
 
     <!-- Page Content -->
-    <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="content" style="height: 100vh">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="!router.url.split('/').includes('login')">
             <div class="container-fluid">
 
                 <button type="button" id="sidebarCollapse" class="btn btn-info" (click)="onSideBarToggle($event)">
