@@ -16,18 +16,7 @@ export class AppComponent implements OnInit {
   locationArray = [];
   // private _sideDrawerTransition: DrawerTransitionBase;
   constructor( private helper: HelperService, public router: Router) {
-    console.log(this.router);
-    // if (!environment.nativeScript && window) {
-    //   try {
-    //     this.location = window.location.href;
-    //     this.locationArray = this.location.split('/');
-    //     console.log('aaaa', this.location);
-    //   } catch (e) {}
-    // }
   }
-  // constructor(private router: Router, private routerExtensions: RouterExtensions) {
-    // Use the component constructor to inject core.
-
 
   ngOnInit(): void {
     this._activatedUrl = '/home';
