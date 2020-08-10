@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {getString, remove, setString} from "tns-core-modules/application-settings";
+import {getString, remove, setString} from 'tns-core-modules/application-settings';
 
 @Injectable({
   providedIn: 'root'

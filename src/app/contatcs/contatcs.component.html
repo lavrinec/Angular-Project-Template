@@ -1,1 +1,31 @@
-<p>contatcs works!</p>
+<div class="h-100 w-100">
+    <div class="h-100">
+<!--        <ng-container *ngFor="let contact of data">-->
+<!--            &lt;!&ndash; contact item &ndash;&gt;-->
+<!--            <div>-->
+<!--                <span>{{contact.name}}</span>-->
+<!--            </div>-->
+<!--        </ng-container>-->
+        <ejs-grid
+            #contactsGrid
+            [dataSource]="data"
+            [editSettings]="{allowEditing: true, mode: 'Batch'}"
+            (cellSaved)="onCellSaved($event)"
+        >
+            <e-columns>
+                <e-column field="id" headerText="ID" [visible]="false" [showInColumnChooser]="false" [isPrimaryKey]="true"></e-column>
+                <e-column field="actionColumn" headerText="" textAlign="Center" [autoFit]="true" width="50px" [allowEditing]="false">
+                    <ng-template #template let-data>
+                        <div class="d-flex">
+                            <div style="cursor: pointer; color: #295fcb" (click)="openDetail(data.id)">
+                                <i class="fa fa-search"></i>
+                            </div>
+                        </div>
+                    </ng-template>
+                </e-column>
+                <e-column field="firstName" headerText="Ime" textAlign="Left" width="*" [allowEditing]="true"></e-column>
+                <e-column field="lastName" headerText="Priimek" textAlign="Left" width="*" [allowEditing]="true"></e-column>
+            </e-columns>
+        </ejs-grid>
+    </div>
+</div>

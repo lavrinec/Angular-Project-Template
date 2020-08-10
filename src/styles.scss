@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/styles/angular-side-bar';
+@import 'assets/styles/syncfusion-overwrite';
 // Import common styles
 @import 'app-common';
+// Import Syncfusion
+@import "../node_modules/@syncfusion/ej2/material.css";
 
 body{
   height: 100vh;

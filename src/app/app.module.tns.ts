@@ -16,7 +16,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.interceptor';
 import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor';
 
-
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 

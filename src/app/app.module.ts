@@ -11,6 +11,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.interceptor';
 import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor';
 import { FormsModule } from '@angular/forms';
+import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
+import { GridModule } from '@syncfusion/ej2-angular-grids';
 
 
 @NgModule({
@@ -25,12 +27,14 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    GridModule
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
