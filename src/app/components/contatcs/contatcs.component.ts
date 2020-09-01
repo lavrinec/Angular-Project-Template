@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
-import { Contact } from '@src/app/contatcs/Contact';
+import { Contact } from '@src/app/components/contatcs/Contact';
 import { EditService } from '@syncfusion/ej2-angular-grids';
 
 @Component({

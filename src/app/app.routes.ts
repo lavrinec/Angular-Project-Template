@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { HomeComponent } from '@src/app/home/home.component';
-import { ContatcsComponent } from '@src/app/contatcs/contatcs.component';
-import { SettingsComponent } from '@src/app/settings/settings.component';
-import { LoginComponent } from '@src/app/login/login.component';
+import { HomeComponent } from '@src/app/components/home/home.component';
+import { ContatcsComponent } from '@src/app/components/contatcs/contatcs.component';
+import { SettingsComponent } from '@src/app/components/settings/settings.component';
+import { LoginComponent } from '@src/app/components/login/login.component';
 import { NonAuthGuardService } from '@src/app/core/services/guards/non-auth-guard.service';
 import { AuthGuardService as AuthGuard } from '@src/app/core/services/guards/auth-guard.service';
 
