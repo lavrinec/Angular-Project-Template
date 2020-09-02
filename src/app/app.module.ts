@@ -13,6 +13,7 @@ import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { GridModule } from '@syncfusion/ej2-angular-grids';
     ContatcsComponent,
     SettingsComponent,
     LoginComponent,
+    ContactsDetailComponent,
   ],
   imports: [
     BrowserModule,

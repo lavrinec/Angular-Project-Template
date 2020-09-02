@@ -15,7 +15,31 @@
     <Label text="Contatcs"></Label>
 </ActionBar>
 
-<GridLayout class="page__content">
-    <Label class="page__content-icon fas" text="&#xf2b9;"></Label>
-    <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+<!--<GridLayout class="page__content">-->
+<!--&lt;!&ndash;    <Label class="page__content-icon fas" text="&#xf2b9;"></Label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <Label class="page__content-placeholder" text="&lt;!&ndash; Page content goes here &ndash;&gt;"></Label>&ndash;&gt;-->
+
+<!--</GridLayout>-->
+<GridLayout tkExampleTitle tkToggleNavButton>
+    <StackLayout orientation="vertical">
+    <TextField hint="Iskani niz" keyboardType="email"
+               autocorrect="false" [(ngModel)]="searchString" autocapitalizationType="none" (ngModelChange)="search()") class="input input-border"></TextField>
+    <RadListView [items]="data" >
+        <ng-template tkListItemTemplate let-item="item" class="list-group" >
+            <StackLayout orientation="vertical">
+                <Label [nsRouterLink]="[item.id]" class="nameLabel" [text]="item.firstName + ' '+item.lastName" class="list-group-item" ></Label>
+            </StackLayout>
+        </ng-template>
+    </RadListView>
+    </StackLayout>
 </GridLayout>
+<!--<StackLayout calass="page" height="100%" >-->
+<!--    <TextField hint="Iskani niz" keyboardType="email"-->
+<!--               autocorrect="false" [(ngModel)]="searchString" autocapitalizationType="none" (ngModelChange)="search()") class="input input-border"></TextField>-->
+<!--    <ListView [items]="data" class="list-group">-->
+<!--        <ng-template let-item="item">-->
+<!--            <Label [nsRouterLink]="['/item', item.ID]" [text]="item.firstName +' '+ item.lastName"-->
+<!--                   class="list-group-item"></Label>-->
+<!--        </ng-template>-->
+<!--    </ListView>-->
+<!--    <StackLayout>-->

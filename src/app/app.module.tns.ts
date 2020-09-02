@@ -15,6 +15,9 @@ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.interceptor';
 import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor';
+import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
+import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
+import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -29,12 +32,14 @@ import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor
     ContatcsComponent,
     SettingsComponent,
     LoginComponent,
-    HideActionBarDirectiveTns
+    HideActionBarDirectiveTns,
+    ContactsDetailComponent
   ],
   imports: [
     NativeScriptModule,
     NativeScriptCommonModule,
     NativeScriptUISideDrawerModule,
+    NativeScriptUIListViewModule,
     NativeScriptHttpClientModule,
     NativeScriptFormsModule,
     AppRoutingModule,
@@ -42,6 +47,7 @@ import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

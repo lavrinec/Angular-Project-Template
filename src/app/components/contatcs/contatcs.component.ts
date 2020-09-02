@@ -3,6 +3,7 @@ import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
 import { Contact } from '@src/app/components/contatcs/Contact';
 import { EditService } from '@syncfusion/ej2-angular-grids';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contatcs',
@@ -11,8 +12,11 @@ import { EditService } from '@syncfusion/ej2-angular-grids';
   providers: [EditService]
 })
 export class ContatcsComponent implements OnInit {
-   data: object[] = [];
+   data: Contact[] = [];
+    searchString;
 
+    // other
+  currentSearchRequest: Subscription;
   constructor(
     private helper: HelperService,
     private contactsService: ContactsService
@@ -25,8 +29,9 @@ export class ContatcsComponent implements OnInit {
     this.helper.onDrawerButtonTap();
   }
 
-  search(searchString) {
-    this.contactsService.search('').subscribe((res: Contact[]) => {
+  search(searchString = this.searchString) {
+    if (this.currentSearchRequest) { this.currentSearchRequest.unsubscribe(); }
+    this.currentSearchRequest = this.contactsService.search(searchString).subscribe((res: Contact[]) => {
       this.data = res;
     });
   }
