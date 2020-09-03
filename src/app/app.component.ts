@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   private _activatedUrl: string;
   private location: string;
   locationArray = [];
-  // private _sideDrawerTransition: DrawerTransitionBase;
+
   constructor( private helper: HelperService, public router: Router) {
   }
 

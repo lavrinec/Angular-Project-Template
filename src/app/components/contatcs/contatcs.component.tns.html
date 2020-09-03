@@ -24,13 +24,15 @@
     <StackLayout orientation="vertical">
     <TextField hint="Iskani niz" keyboardType="email"
                autocorrect="false" [(ngModel)]="searchString" autocapitalizationType="none" (ngModelChange)="search()") class="input input-border"></TextField>
-    <RadListView [items]="data" >
+    <RadListView [items]="data" *ngIf="data && data.length > 0 && !loading">
         <ng-template tkListItemTemplate let-item="item" class="list-group" >
             <StackLayout orientation="vertical">
                 <Label [nsRouterLink]="[item.id]" class="nameLabel" [text]="item.firstName + ' '+item.lastName" class="list-group-item" ></Label>
             </StackLayout>
         </ng-template>
     </RadListView>
+        <Label text="Ni iskalnih zadetkov." *ngIf="!data || data.length === 0 && !loading"></Label>
+        <ActivityIndicator width="75" height="75" [busy]="loading" class="loading"></ActivityIndicator>
     </StackLayout>
 </GridLayout>
 <!--<StackLayout calass="page" height="100%" >-->

@@ -3,7 +3,8 @@ import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
 import { Contact } from '@src/app/components/contatcs/Contact';
 import { EditService } from '@syncfusion/ej2-angular-grids';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contatcs',
@@ -13,10 +14,13 @@ import { Subscription } from 'rxjs';
 })
 export class ContatcsComponent implements OnInit {
    data: Contact[] = [];
-    searchString;
+  searchString;
 
-    // other
+  // other
+  loading = false;
+  userInputDelayTimeout;
   currentSearchRequest: Subscription;
+
   constructor(
     private helper: HelperService,
     private contactsService: ContactsService
@@ -30,10 +34,16 @@ export class ContatcsComponent implements OnInit {
   }
 
   search(searchString = this.searchString) {
-    if (this.currentSearchRequest) { this.currentSearchRequest.unsubscribe(); }
-    this.currentSearchRequest = this.contactsService.search(searchString).subscribe((res: Contact[]) => {
-      this.data = res;
-    });
+    // delay da ne gremo po podatke kadar upoabnik hitro tipka
+    clearTimeout(this.userInputDelayTimeout);
+    this.userInputDelayTimeout = setTimeout(() => {
+      this.loading = true;
+      if (this.currentSearchRequest) { this.currentSearchRequest.unsubscribe(); }
+      this.currentSearchRequest = this.contactsService.search(searchString).subscribe((res: Contact[]) => {
+        this.data = res;
+        this.loading = false;
+      });
+    }, 300);
   }
 
   openDetail(contactId) {

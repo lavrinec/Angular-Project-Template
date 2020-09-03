@@ -38,7 +38,6 @@ export class HelperService implements OnInit {
 
   onDrawerButtonTap(): void {
     const sideDrawer: RadSideDrawer = <RadSideDrawer>app.getRootView();
-    // console.log('service: kliknil na gumbek side drawer', <RadSideDrawer>app.getRootView());
     sideDrawer.showDrawer();
   }
 

@@ -18,6 +18,7 @@ import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor
 import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
+import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -40,6 +41,7 @@ import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.d
     NativeScriptCommonModule,
     NativeScriptUISideDrawerModule,
     NativeScriptUIListViewModule,
+    NativeScriptUIDataFormModule,
     NativeScriptHttpClientModule,
     NativeScriptFormsModule,
     AppRoutingModule,
