@@ -22,8 +22,12 @@
 <!--</GridLayout>-->
 <GridLayout tkExampleTitle tkToggleNavButton>
     <StackLayout orientation="vertical">
-    <TextField hint="Iskani niz" keyboardType="email"
-               autocorrect="false" [(ngModel)]="searchString" autocapitalizationType="none" (ngModelChange)="search()") class="input input-border"></TextField>
+        <SearchBar  hint="Enter search term here ..."
+                    [text]="searchString"
+                    (textChange)="onTextChange($event)"
+                    (clear)="onClear($event)"
+                    (submit)="onSubmit($event)">
+        </SearchBar>
     <RadListView [items]="data" *ngIf="data && data.length > 0 && !loading">
         <ng-template tkListItemTemplate let-item="item" class="list-group" >
             <StackLayout orientation="vertical">

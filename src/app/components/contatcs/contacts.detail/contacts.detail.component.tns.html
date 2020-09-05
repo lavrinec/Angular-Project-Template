@@ -1,19 +1,53 @@
 <ActionBar class="m-t-24">
-    <!--
-    Use the NavigationButton as a side-drawer button in Android
-    because ActionItems are shown on the right side of the ActionBar
-    -->
-    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
-    <!--
-    Use the ActionItem for IOS with position set to left. Using the
-    NavigationButton as a side-drawer button in iOS is not possible,
-    because its function is to always navigate back in the application.
-    -->
-    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
-                ios.position="left">
-    </ActionItem>
+<!--    <ActionItem (tap)="goBack()" ios.systemIcon="9" ios.position="left"-->
+<!--                android.systemIcon="ic_menu_share" android.position="actionBar">-->
+<!--    </ActionItem>-->
+<!--    <ActionItem text="delete" (tap)="goBack()"-->
+<!--                ios.systemIcon="16" ios.position="right" android.position="popup">-->
+<!--    </ActionItem>-->
+
+    <NavigationButton icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>f060
+<!--    <ActionItem icon="font://&#xf013;" class="fas" ios.position="right" (tap)="openSettings()"></ActionItem>-->
+<!--        <ActionItem text="delete" (tap)="goBack()"-->
+<!--                    ios.systemIcon="16" ios.position="right" android.position="popup">-->
+<!--        </ActionItem>-->
     <Label text="Contatcs"></Label>
 </ActionBar>
 
-{{contact | json}}
-<Button text="contacts.detail works!" class="btn btn-primary"></Button>
+<!--<Button text="contacts.detail works!" class="btn btn-primary"></Button>-->
+<RadDataForm tkExampleTitle tkToggleNavButton [source]="contactDTO" *ngIf="contactDTO">
+    <TKEntityProperty tkDataFormProperty name="id" displayName="ID" index="0" hidden="true"></TKEntityProperty>
+
+    <TKEntityProperty tkDataFormProperty name="firstName" displayName="Ime" index="1"></TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="lastName" displayName="Priimek" index="2"></TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="function" displayName="Funkcija" index="3"></TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="birthday" displayName="Datum rojstva" index="4">
+        <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="isActive" displayName="Aktiven" index="5">
+        <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="prefix" displayName="Predpona" index="6" [valuesProvider]="predpona">
+        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="suffix" displayName="Pripona" index="7" [valuesProvider]="pripona">
+        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+
+<!--    <TKEntityProperty tkDataFormProperty name="age" displayName="Age" index="1">-->
+<!--        <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>-->
+<!--    </TKEntityProperty>-->
+<!--    <TKEntityProperty tkDataFormProperty name="email" displayName="E-Mail" index="2">-->
+<!--        <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>-->
+<!--    </TKEntityProperty>-->
+<!--    <TKEntityProperty tkDataFormProperty name="city" displayName="City" index="3" valuesProvider="New York, Washington, Los Angeles">-->
+<!--        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>-->
+<!--    </TKEntityProperty>-->
+<!--    <TKEntityProperty tkDataFormProperty name="street" displayName="Street Name" index="4"></TKEntityProperty>-->
+<!--    <TKEntityProperty tkDataFormProperty name="streetNumber" displayName="Street Number" index="5">-->
+<!--        <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>-->
+<!--    </TKEntityProperty>-->
+</RadDataForm>
+<!--<Button text="contacts.detail works!" class="btn btn-primary" (tap)="logProperty()"></Button>-->
+
+

@@ -10,7 +10,7 @@ import { ContatcsComponent } from '@src/app/components/contatcs/contatcs.compone
 import { SettingsComponent } from '@src/app/components/settings/settings.component';
 import { LoginComponent } from '@src/app/components/login/login.component';
 import {NativeScriptCommonModule} from 'nativescript-angular/common';
-import { HideActionBarDirectiveTns } from '@src/app/core/services/utils/hide-action-bar.directive';
+import { HideActionBarDirectiveTnsDirective } from '@src/app/core/services/utils/hide-action-bar.directive';
 import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.interceptor';
@@ -33,7 +33,7 @@ import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
     ContatcsComponent,
     SettingsComponent,
     LoginComponent,
-    HideActionBarDirectiveTns,
+    HideActionBarDirectiveTnsDirective,
     ContactsDetailComponent
   ],
   imports: [

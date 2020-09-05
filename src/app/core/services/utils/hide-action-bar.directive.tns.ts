@@ -5,7 +5,7 @@ import { Page } from 'tns-core-modules/ui/page/page';
   selector: '[appHideActionBar]'
 })
 
-export class HideActionBarDirectiveTns {
+export class HideActionBarDirectiveTnsDirective {
   constructor(private page: Page) {
     this.page.actionBarHidden = true;
   }

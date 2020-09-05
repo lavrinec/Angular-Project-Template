@@ -3,6 +3,10 @@ import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from 'nat
 import * as app from 'tns-core-modules/application';
 import { Router} from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
+import { SearchBar } from 'tns-core-modules/ui/search-bar';
+import { UserData } from '@src/app/components/Classes/UserData';
+import { AuthService } from '@src/app/core/services/api/auth.service';
+import { Label } from 'tns-core-modules/ui/label';
 
 
 @Injectable({
@@ -11,10 +15,11 @@ import { RouterExtensions } from 'nativescript-angular/router';
 export class HelperService implements OnInit {
 
   private _sideDrawerTransition: DrawerTransitionBase;
-
+  user: UserData;
   constructor(
     private router: Router,
     private routerExtensions: RouterExtensions,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -36,9 +41,21 @@ export class HelperService implements OnInit {
     sideDrawer.closeDrawer();
   }
 
-  onDrawerButtonTap(): void {
-    const sideDrawer: RadSideDrawer = <RadSideDrawer>app.getRootView();
-    sideDrawer.showDrawer();
+  closeDrawer() {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.closeDrawer();
   }
 
+  onDrawerButtonTap(): void {
+   const sideDrawer: RadSideDrawer = <RadSideDrawer>app.getRootView();
+   sideDrawer.showDrawer();
+  }
+
+  searchBarText(args) {
+    const searchBar = args.object as SearchBar;
+    return searchBar.text;
+  }
+ goBack() {
+   this.routerExtensions.backToPreviousPage();
+ }
 }

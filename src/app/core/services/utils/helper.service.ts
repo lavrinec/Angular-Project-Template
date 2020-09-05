@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { SearchBar } from 'tns-core-modules/ui/search-bar';
+import { UserData } from '@src/app/components/Classes/UserData';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +28,15 @@ export class HelperService {
       overlayElement.classList.add('active');
     }
   }
+
+  searchBarText(args) {
+    return '';
+  }
+
+  goBack(): void {
+  }
+  closeDrawer(): void {
+
+  }
+  userData(): UserData { return new UserData(); }
 }

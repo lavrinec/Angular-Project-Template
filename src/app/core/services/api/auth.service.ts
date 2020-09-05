@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthStateService} from '@src/app/core/services/state/auth-state.service';
 import {tap} from 'rxjs/operators';
 import * as moment from 'moment';
+import { UserData } from '@src/app/components/Classes/UserData';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +27,8 @@ export class AuthService {
         }
       ));
   }
-}
+
+  getUserData(): Observable<UserData> {
+      return this.httpClient.get<UserData>('/api/auth/userdata');
+    }
+  }

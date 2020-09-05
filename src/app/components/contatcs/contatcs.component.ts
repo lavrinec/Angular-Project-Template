@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
-import { Contact } from '@src/app/components/contatcs/Contact';
+import { Contact } from '@src/app/components/Classes/Contact';
 import { EditService } from '@syncfusion/ej2-angular-grids';
-import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contatcs',
@@ -33,7 +32,7 @@ export class ContatcsComponent implements OnInit {
     this.helper.onDrawerButtonTap();
   }
 
-  search(searchString = this.searchString) {
+  search(searchString) {
     // delay da ne gremo po podatke kadar upoabnik hitro tipka
     clearTimeout(this.userInputDelayTimeout);
     this.userInputDelayTimeout = setTimeout(() => {
@@ -44,6 +43,19 @@ export class ContatcsComponent implements OnInit {
         this.loading = false;
       });
     }, 300);
+  }
+
+  onTextChange(args) {
+    this.searchString = this.helper.searchBarText(args);
+    this.search(this.searchString);
+  }
+  onClear(args) {
+    this.search('');
+    console.log(`Clear event raised`);
+  }
+  onSubmit(args) {
+    this.searchString = this.helper.searchBarText(args);
+    this.search(this.searchString);
   }
 
   openDetail(contactId) {

@@ -165,6 +165,6 @@ export class Contact {
   parentType: string;
   category: string;
   validate: true;
-  operations: ('read'|'write'|'delete'|'full')[] = [];
+  // operations: ('read'|'write'|'delete'|'full')[] = [];
   constructor() {}
 }
