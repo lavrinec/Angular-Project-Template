@@ -1,0 +1,8 @@
+.m-reminder-item {
+  &:hover {
+    background-color: #f2f2f2 !important;
+    .m-dismiss-reminder {
+      display: block !important;
+    }
+  }
+}

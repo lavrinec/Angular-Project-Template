@@ -19,6 +19,7 @@ import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
+import { RemindersComponent } from '@src/app/components/reminders/reminders.component';
 import { NativeScriptUIAutoCompleteTextViewModule } from 'nativescript-ui-autocomplete/angular';
 import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
 
@@ -36,7 +37,8 @@ import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
     SettingsComponent,
     LoginComponent,
     HideActionBarDirectiveTnsDirective,
-    ContactsDetailComponent
+    ContactsDetailComponent,
+    RemindersComponent
   ],
   imports: [
     NativeScriptModule,
@@ -44,7 +46,6 @@ import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
     NativeScriptUISideDrawerModule,
     NativeScriptUIListViewModule,
     NativeScriptUIDataFormModule,
-    NativeScriptUICalendarModule,
     NativeScriptHttpClientModule,
     NativeScriptFormsModule,
     AppRoutingModule,

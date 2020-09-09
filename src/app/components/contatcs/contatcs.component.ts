@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
 import { Contact } from '@src/app/components/Classes/Contact';
-import { EditService } from '@syncfusion/ej2-angular-grids';
+import {
+  EditService,
+  PageSettingsModel,
+  PageService,
+  ToolbarService,
+  GridComponent
+} from '@syncfusion/ej2-angular-grids';
 import { Subscription } from 'rxjs';
+import { DialogUtility } from '@syncfusion/ej2-angular-popups';
 
 @Component({
   selector: 'app-contatcs',
   templateUrl: './contatcs.component.html',
   styleUrls: ['./contatcs.component.scss'],
-  providers: [EditService]
+  providers: [EditService, PageService, ToolbarService]
 })
 export class ContatcsComponent implements OnInit {
    data: Contact[] = [];
+   pageSettings: PageSettingsModel =  { pageCount: 4, pageSize: 30 };
   searchString;
+
+  // SF grid
+  @ViewChild('contactsGrid', {static: true}) gridComponent: GridComponent;
 
   // other
   loading = false;
@@ -72,5 +83,33 @@ export class ContatcsComponent implements OnInit {
     this.contactsService.patchContacts([patchObject]).subscribe(res => {
       console.log('aaaaa patch successful', res);
     });
+  }
+
+  onActionBegin(args) {
+    console.log('aaaa onActionBegin', args);
+  }
+
+  onBeforeBatchAdd(args) {
+    args.cancel = true;
+    // todo dat svoj dialog za dodajnje
+  }
+  onBeforeBatchDelete(args, force = false) {
+    if (!force) {
+      args.cancel = true;
+      const confirmDeleteDialog = DialogUtility.confirm({
+        title: 'Ste prepričani da želite izbrisati kontaktno osebo?',
+        okButton: {text: 'Izbriši', cssClass: 'e-danger', click: () => {
+            confirmDeleteDialog.hide();
+            this.contactsService.deleteContact(args.rowData.id).subscribe(() => {
+              this.gridComponent.deleteRecord(args.rowData);
+            });
+          }},
+        cancelButton: {text: 'Prekliči', cssClass: '', click: () => {
+            confirmDeleteDialog.hide();
+          }}
+      });
+    } else {
+
+    }
   }
 }

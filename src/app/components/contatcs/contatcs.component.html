@@ -1,31 +1,93 @@
 <div class="h-100 w-100">
-    <div class="h-100">
+    <div class="h-100 d-flex flex-column">
+
+        <div class="align-items-center p-2 d-flex" style="min-height: 42px">
+            <i class="fa fa-fw fa-address-book mr-2" style="color: darkgrey"></i>
+            <span style="font-weight: 500">Kontaknte osebe</span>
+            <div class="m-vertical-spacer mx-2" style="background-color: #00000022; width: 1px; height: 100%"></div>
+            <ejs-textbox
+                [value]="searchString"
+                (valueChange)="searchString = $event; search($event)"
+                placeholder="Iskanje..."
+                floatLabelType="Never"
+            ></ejs-textbox>
+        </div>
 <!--        <ng-container *ngFor="let contact of data">-->
 <!--            &lt;!&ndash; contact item &ndash;&gt;-->
 <!--            <div>-->
 <!--                <span>{{contact.name}}</span>-->
 <!--            </div>-->
 <!--        </ng-container>-->
-        <ejs-grid
-            #contactsGrid
-            [dataSource]="data"
-            [editSettings]="{allowEditing: true, mode: 'Batch'}"
-            (cellSaved)="onCellSaved($event)"
-        >
-            <e-columns>
-                <e-column field="id" headerText="ID" [visible]="false" [showInColumnChooser]="false" [isPrimaryKey]="true"></e-column>
-                <e-column field="actionColumn" headerText="" textAlign="Center" [autoFit]="true" width="50px" [allowEditing]="false">
-                    <ng-template #template let-data>
-                        <div class="d-flex">
-                            <div style="cursor: pointer; color: #295fcb" (click)="openDetail(data.id)">
-                                <i class="fa fa-search"></i>
+        <div style="flex: 1">
+            <ejs-grid
+                #contactsGrid
+                [dataSource]="data"
+                [editSettings]="{allowEditing: true, mode: 'Batch', allowAdding: true, allowDeleting: true}"
+                [allowPaging]="true"
+                [pageSettings]="pageSettings"
+                [toolbar]="['Add', 'Delete']"
+                class="m-grid"
+                (cellSaved)="onCellSaved($event)"
+                (actionBegin)="onActionBegin($event)"
+                (beforeBatchAdd)="onBeforeBatchAdd($event)"
+                (beforeBatchDelete)="onBeforeBatchDelete($event)"
+            >
+                <e-columns>
+                    <e-column field="id" headerText="ID" [visible]="false" [showInColumnChooser]="false" [isPrimaryKey]="true"></e-column>
+                    <e-column field="actionColumn" headerText="" textAlign="Center" [autoFit]="true" width="50px" [allowEditing]="false">
+                        <ng-template #template let-data>
+                            <div class="d-flex ml-2">
+                                <div style="cursor: pointer; color: #295fcb" (click)="openDetail(data.id)">
+                                    <i class="fa fa-search"></i>
+                                </div>
                             </div>
-                        </div>
-                    </ng-template>
-                </e-column>
-                <e-column field="firstName" headerText="Ime" textAlign="Left" width="*" [allowEditing]="true"></e-column>
-                <e-column field="lastName" headerText="Priimek" textAlign="Left" width="*" [allowEditing]="true"></e-column>
-            </e-columns>
-        </ejs-grid>
+                        </ng-template>
+                    </e-column>
+                    <e-column field="firstName" headerText="Ime" textAlign="Left" width="*" [allowEditing]="true"></e-column>
+                    <e-column field="lastName" headerText="Priimek" textAlign="Left" width="*" [allowEditing]="true"></e-column>
+                    <e-column field="mobileNumber" headerText="Mobilni" textAlign="Left" width="*" [allowEditing]="true" [template]="templatePhoneNumber">
+                    </e-column>
+                    <e-column field="businessNumber" headerText="Službeni" textAlign="Left" width="*" [allowEditing]="true" [template]="templatePhoneNumber">
+                    </e-column>
+                    <e-column field="businessNumberCentral" headerText="Službeni - centrala" textAlign="Left" width="*" [allowEditing]="true" [template]="templatePhoneNumber">
+                    </e-column>
+                    <e-column field="email1" headerText="Email" textAlign="Left" width="*" [allowEditing]="true" [template]="emailColumnTemplate">
+                    </e-column>
+                </e-columns>
+            </ejs-grid>
+        </div>
+
     </div>
 </div>
+
+<!-- phone number column template -->
+<ng-template #templatePhoneNumber let-data>
+    <div class="d-flex">
+        <!-- action -->
+        <div class="pr-1 m-grid-prevent-edit" *ngIf="data[data['column']['field']] && data[data['column']['field']].length > 0">
+            <a [href]="'tel:' + data[data['column']['field']]">
+                <i class="fa fa-phone m-grid-prevent-edit" style="cursor: pointer;"></i>
+            </a>
+        </div>
+        <!-- number -->
+        <div style="flex: 1" class="m-break-ellipsis">
+            <span>{{data[data['column']['field']]}}</span>
+        </div>
+    </div>
+</ng-template>
+
+<!-- email column template -->
+<ng-template #emailColumnTemplate let-data>
+    <div class="d-flex">
+        <!-- action -->
+        <div class="pr-1 m-grid-prevent-edit" *ngIf="data[data['column']['field']] && data[data['column']['field']].length > 0">
+            <a [href]="'mailto:' + data[data['column']['field']]">
+                <i class="far fa-envelope m-grid-prevent-edit" style="cursor: pointer;"></i>
+            </a>
+        </div>
+        <!-- email -->
+        <div style="flex: 1" class="m-break-ellipsis">
+            <span>{{data[data['column']['field']]}}</span>
+        </div>
+    </div>
+</ng-template>
