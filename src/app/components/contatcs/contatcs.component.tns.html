@@ -26,12 +26,12 @@
                     [text]="searchString"
                     (textChange)="onTextChange($event)"
                     (clear)="onClear($event)"
-                    (submit)="onSubmit($event)">
+                    (submit)="onSubmit($event)"   backgroundColor="#cfc7c6">
         </SearchBar>
     <RadListView [items]="data" *ngIf="data && data.length > 0 && !loading">
         <ng-template tkListItemTemplate let-item="item" class="list-group" >
             <StackLayout orientation="vertical">
-                <Label [nsRouterLink]="[item.id]" class="nameLabel" [text]="item.firstName + ' '+item.lastName" class="list-group-item" ></Label>
+                <Label [nsRouterLink]="[item.id]" class="nameLabel" [text]="item.firstName + ' '+item.lastName" class="list-group-item -separator" ></Label>
             </StackLayout>
         </ng-template>
     </RadListView>
