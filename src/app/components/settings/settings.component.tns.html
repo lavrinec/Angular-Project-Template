@@ -15,8 +15,7 @@
     <Label text="Settings"></Label>
 </ActionBar>
 
-<GridLayout class="page__content">
-    <Label class="page__content-icon fas" text="&#xf013;"></Label>
-    <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
-    <Button text="contacts.detail works!" class="-primary"></Button>
-</GridLayout>
+<StackLayout class="nt-form"   justifyContent ="center" verticalAlignment="middle">
+    <TextField hint="Server URL Path..." autocorrect="false" [(ngModel)]="serverUrl" autocapitalizationType="none" class="" [disabled]="authInProgress"></TextField>
+    <Button text="Save settings" class="-primary -rounded-sm"  (tap)="saveSettings()" ></Button>
+</StackLayout>

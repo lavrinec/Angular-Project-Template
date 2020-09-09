@@ -19,6 +19,8 @@ import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
+import { NativeScriptUIAutoCompleteTextViewModule } from 'nativescript-ui-autocomplete/angular';
+import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -42,6 +44,7 @@ import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
     NativeScriptUISideDrawerModule,
     NativeScriptUIListViewModule,
     NativeScriptUIDataFormModule,
+    NativeScriptUICalendarModule,
     NativeScriptHttpClientModule,
     NativeScriptFormsModule,
     AppRoutingModule,
