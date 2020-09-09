@@ -7,6 +7,7 @@ import { AuthStateService } from '@src/app/core/services/state/auth-state.servic
 import { AuthService } from '@src/app/core/services/api/auth.service';
 import { UserData } from '@src/app/components/Classes/UserData';
 import { Observable } from 'rxjs';
+import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -24,11 +25,13 @@ export class AppComponent implements OnInit {
       private helper: HelperService,
       public router: Router,
       private authStateService: AuthStateService,
+      private localStorageService: LocalStorageService,
   ) {
     this.userData = this.authStateService.userData.value;
     this.authStateService.userData.subscribe(userData => {
       this.userData = userData;
     });
+
   }
 
   ngOnInit(): void {
@@ -54,4 +57,9 @@ export class AppComponent implements OnInit {
     this.authStateService.logout();
     this.helper.closeDrawer();
   }
+
+  kliknime() {
+    console.log(this.localStorageService.GetAll());
+  }
+
 }
