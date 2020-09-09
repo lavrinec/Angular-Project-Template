@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppRoutingModule } from '@src/app/app-routing.module';
@@ -14,6 +14,26 @@ import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
+import {TextBoxModule} from '@syncfusion/ej2-angular-inputs';
+import { RemindersComponent, IsReminderDue } from '@src/app/components/reminders/reminders.component';
+import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
+import {loadCldr, setCulture, setCurrencyCode} from '@syncfusion/ej2-base';
+import { registerLocaleData } from '@angular/common';
+import localeSl from '@angular/common/locales/sl';
+
+registerLocaleData(localeSl, 'sl');
+
+declare const require: any;
+
+loadCldr(
+    require('cldr-data/supplemental/numberingSystems.json'),
+    require('cldr-data/main/sl/ca-gregorian.json'),
+    require('cldr-data/main/sl/numbers.json'),
+    require('cldr-data/main/sl/timeZoneNames.json'),
+    require('cldr-data/supplemental/weekdata.json')
+);
+setCulture('sl');
+setCurrencyCode('EUR');
 
 
 @NgModule({
@@ -24,16 +44,21 @@ import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.d
     SettingsComponent,
     LoginComponent,
     ContactsDetailComponent,
+    RemindersComponent,
+    IsReminderDue
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    GridModule
+    GridModule,
+    TextBoxModule,
+    ScheduleModule,
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'sl' },
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

@@ -8,7 +8,6 @@ import { AuthService } from '@src/app/core/services/api/auth.service';
 import { UserData } from '@src/app/components/Classes/UserData';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,19 +17,21 @@ export class AppComponent implements OnInit {
   private _activatedUrl: string;
   private location: string;
   locationArray = [];
-  user: UserData;
+  userData: UserData;
 
 
-  constructor( private helper: HelperService,
-               public router: Router,
-               private authStateService: AuthStateService,
-               ) {
+  constructor(
+      private helper: HelperService,
+      public router: Router,
+      private authStateService: AuthStateService,
+  ) {
+    this.userData = this.authStateService.userData.value;
+    this.authStateService.userData.subscribe(userData => {
+      this.userData = userData;
+    });
   }
 
   ngOnInit(): void {
-    // this.user = this.helper.userData();
-    // console.log(this.user);
-    // console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
     this._activatedUrl = '/home';
     this.router.events
         .pipe(filter((event: any) => event instanceof NavigationEnd))

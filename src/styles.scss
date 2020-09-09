@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/styles/angular-side-bar';
 @import 'assets/styles/syncfusion-overwrite';
+@import 'assets/styles/SF-grid-styles';
 // Import common styles
 @import 'app-common';
 // Import Syncfusion
+//@import "../node_modules/@syncfusion/ej2/base/material.css";
 @import "../node_modules/@syncfusion/ej2/material.css";
+//$primary: #17a2b8;
+$accent: #17a2b8; // change default SF color
 
 body{
   height: 100vh;

@@ -5,6 +5,7 @@ import { AuthService } from '@src/app/core/services/api/auth.service';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-
+    this.setUserData();
   }
 
   ngOnDestroy() {
@@ -50,6 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   redirectAfterLoginSuccess() {
     console.log('uspešen login');
+    this.setUserData();
     const redirectTo = this.authStateService.initialRedirectUrl;
     const queryParams = this.authStateService.initialQueryParams;
     if (redirectTo) {
@@ -59,5 +61,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     } else {
       void this.router.navigate(['home'], { replaceUrl: true });
     }
+  }
+
+  setUserData() {
+    // check if user logged in and fill userData.
+    this.authService.getUserData().subscribe((userData) => {
+      this.authStateService.userData.next(userData);
+    });
   }
 }

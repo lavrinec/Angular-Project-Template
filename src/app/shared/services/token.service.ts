@@ -6,7 +6,9 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class TokenService {
 
-  constructor(private cookieService: CookieService) { }
+  constructor(
+      private cookieService: CookieService,
+  ) { }
 
   public setCookie(name: string, value: string, expirationDate?: Date) {
       this.cookieService.set(name, value, expirationDate);

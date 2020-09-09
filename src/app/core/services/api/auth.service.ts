@@ -4,7 +4,8 @@ import {AuthStateService} from '@src/app/core/services/state/auth-state.service'
 import {tap} from 'rxjs/operators';
 import * as moment from 'moment';
 import { UserData } from '@src/app/components/Classes/UserData';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,9 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    private authStateService: AuthStateService
-  ) { }
+    private authStateService: AuthStateService,
+    private LSS: LocalStorageService,
+  ) {}
 
   login(username: string, password: string) {
     const queryParams = '?username=' + username + '&password=' + password;
