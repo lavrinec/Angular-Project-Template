@@ -28,10 +28,7 @@ export class AppComponent implements OnInit {
       private authService: AuthService,
       private LSS: LocalStorageService
   ) {
-    this.userData = this.authStateService.userData.value;
-    this.authStateService.userData.subscribe(userData => {
-      this.userData = userData;
-    });
+    this.setUserData();
   }
 
   ngOnInit(): void {
@@ -67,7 +64,7 @@ export class AppComponent implements OnInit {
   }
 
   kliknime() {
-    console.log(this.localStorageService.GetAll());
+    console.log(this.LSS.GetAll());
   }
 
 }
