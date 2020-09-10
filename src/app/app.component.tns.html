@@ -7,8 +7,8 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
     <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
         <StackLayout row="0" class="nt-drawer__header">
             <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
-            <Label id="name" class="nt-drawer__header-brand" text="" ></Label>
-            <Label id="username" class="nt-drawer__header-footnote" text="username@mail.com"></Label>
+            <Label id="name"  *ngIf="userData" class="nt-drawer__header-brand"  [text]="userData.Ime + ' ' + userData.Priimek" ></Label>
+            <Label id="username" *ngIf="userData" class="nt-drawer__header-footnote" [text]="userData.UserName"></Label>
         </StackLayout>
 
         <ScrollView row="1" class="nt-drawer__body">
@@ -32,6 +32,10 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
                 <GridLayout columns="auto, *" class="nt-drawer__list-item"  (tap)="logout()">
                     <Label col="0" text="&#xf2f5;" class="nt-icon fas"></Label>
                     <Label col="1" text="LogOut" class="p-r-10"></Label>
+                </GridLayout>
+                <GridLayout columns="auto, *" class="nt-drawer__list-item"  (tap)="kliknime()">
+                    <Label col="0" text="&#xf2f5;" class="nt-icon fas"></Label>
+                    <Label col="1" text="Klikni me " class="p-r-10"></Label>
                 </GridLayout>
             </StackLayout>
         </ScrollView>

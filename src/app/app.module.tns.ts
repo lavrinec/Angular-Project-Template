@@ -46,6 +46,7 @@ import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
     NativeScriptUISideDrawerModule,
     NativeScriptUIListViewModule,
     NativeScriptUIDataFormModule,
+    NativeScriptUICalendarModule,
     NativeScriptHttpClientModule,
     NativeScriptFormsModule,
     AppRoutingModule,

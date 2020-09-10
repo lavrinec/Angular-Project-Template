@@ -47,6 +47,7 @@
     "@angular/router": "~8.2.0",
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@nativescript/theme": "~2.3.3",
+    "@nstudio/nativescript-floatingactionbutton": "^2.1.0",
     "@syncfusion/ej2-angular-calendars": "^18.2.56",
     "bootstrap": "^4.5.0",
     "core-js": "^2.6.9",

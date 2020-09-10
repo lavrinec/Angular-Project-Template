@@ -7,7 +7,7 @@ import { AuthStateService } from '@src/app/core/services/state/auth-state.servic
 import { AuthService } from '@src/app/core/services/api/auth.service';
 import { UserData } from '@src/app/components/Classes/UserData';
 import { Observable } from 'rxjs';
-import {LocalStorageService} from "@src/app/shared/services/local-storage.service";
+import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -65,4 +65,9 @@ export class AppComponent implements OnInit {
       this.authStateService.userData.next(userData);
     });
   }
+
+  kliknime() {
+    console.log(this.localStorageService.GetAll());
+  }
+
 }

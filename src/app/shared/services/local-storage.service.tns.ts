@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {getString, remove, setString} from 'tns-core-modules/application-settings';
+import {getString, remove, setString, getAllKeys} from 'tns-core-modules/application-settings';
 
 @Injectable({
     providedIn: 'root'
@@ -24,5 +24,9 @@ export class LocalStorageService {
 
     private modifyName(name: string) {
         return 'manto-storage|' + name.toLowerCase();
+    }
+
+    GetAll() {
+        return getAllKeys();
     }
 }
