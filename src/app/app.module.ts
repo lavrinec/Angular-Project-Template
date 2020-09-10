@@ -15,11 +15,13 @@ import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import {TextBoxModule} from '@syncfusion/ej2-angular-inputs';
-import { RemindersComponent, IsReminderDue } from '@src/app/components/reminders/reminders.component';
+import {RemindersComponent, IsReminderDue, SortReminders} from '@src/app/components/reminders/reminders.component';
 import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
 import {loadCldr, setCulture, setCurrencyCode} from '@syncfusion/ej2-base';
 import { registerLocaleData } from '@angular/common';
 import localeSl from '@angular/common/locales/sl';
+import * as moment from 'moment';
+moment.locale('sl');
 
 registerLocaleData(localeSl, 'sl');
 
@@ -45,7 +47,8 @@ setCurrencyCode('EUR');
     LoginComponent,
     ContactsDetailComponent,
     RemindersComponent,
-    IsReminderDue
+    IsReminderDue,
+    SortReminders,
   ],
   imports: [
     BrowserModule,
@@ -58,10 +61,13 @@ setCurrencyCode('EUR');
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'sl' },
-    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    {provide: LOCALE_ID, useValue: 'sl'},
+    {provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+  ],
+  exports: [
+    SortReminders
   ],
   bootstrap: [AppComponent]
 })

@@ -6,3 +6,32 @@
     }
   }
 }
+
+.m-reminder-item {
+
+  &:hover {
+    .m-reminder-settings, .m-reminder-offset-options {
+      display: block !important;
+    }
+  }
+  .m-reminder-template {
+    padding: 6px 10px 6px 10px;
+    border-bottom: 1px solid gainsboro;
+  }
+  .m-reminder-overdue {
+    color: gray;
+  }
+  .m-reminder-contents {
+    .m-reminder-text {
+      font-size: 14px;
+    }
+  }
+
+  .m-reminder-settings {
+    .fa {
+      color: #919093;
+      cursor: pointer;
+    }
+  }
+}
+

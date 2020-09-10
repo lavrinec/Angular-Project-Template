@@ -5,6 +5,7 @@ import { AuthService } from '@src/app/core/services/api/auth.service';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
+import {LocalStorageService} from "@src/app/shared/services/local-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private helper: HelperService,
     private authStateService: AuthStateService,
     private router: Router,
+    private LSS: LocalStorageService
   ) { }
 
   ngOnInit() {
@@ -66,6 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   setUserData() {
     // check if user logged in and fill userData.
     this.authService.getUserData().subscribe((userData) => {
+      this.LSS.store('userData', userData);
       this.authStateService.userData.next(userData);
     });
   }

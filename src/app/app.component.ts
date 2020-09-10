@@ -7,6 +7,7 @@ import { AuthStateService } from '@src/app/core/services/state/auth-state.servic
 import { AuthService } from '@src/app/core/services/api/auth.service';
 import { UserData } from '@src/app/components/Classes/UserData';
 import { Observable } from 'rxjs';
+import {LocalStorageService} from "@src/app/shared/services/local-storage.service";
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
       private helper: HelperService,
       public router: Router,
       private authStateService: AuthStateService,
+      private authService: AuthService,
+      private LSS: LocalStorageService
   ) {
     this.userData = this.authStateService.userData.value;
     this.authStateService.userData.subscribe(userData => {
@@ -53,5 +56,13 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.authStateService.logout();
     this.helper.closeDrawer();
+  }
+
+  setUserData() {
+    // check if user logged in and fill userData.
+    this.authService.getUserData().subscribe((userData) => {
+      this.LSS.store('userData', userData);
+      this.authStateService.userData.next(userData);
+    });
   }
 }
