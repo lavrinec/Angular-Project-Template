@@ -21,6 +21,7 @@ import {loadCldr, setCulture, setCurrencyCode} from '@syncfusion/ej2-base';
 import { registerLocaleData } from '@angular/common';
 import localeSl from '@angular/common/locales/sl';
 import * as moment from 'moment';
+import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
 moment.locale('sl');
 
 registerLocaleData(localeSl, 'sl');
@@ -49,6 +50,7 @@ setCurrencyCode('EUR');
     RemindersComponent,
     IsReminderDue,
     SortReminders,
+    ActivityDetailComponent,
   ],
   imports: [
     BrowserModule,

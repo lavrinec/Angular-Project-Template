@@ -31,6 +31,9 @@ export class AuthService {
   }
 
   getUserData(): Observable<UserData> {
-      return this.httpClient.get<UserData>('/api/auth/userdata');
+      return this.httpClient.get<UserData>('/api/auth/userdata').pipe(tap((response) => {
+        this.LSS.store('userData', response);
+        this.authStateService.userData.next(response);
+      }));
     }
   }

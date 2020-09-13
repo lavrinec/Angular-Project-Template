@@ -39,4 +39,9 @@ export const routes: Routes = [
       component: LoginComponent,
     canActivate: [NonAuthGuardService]
   },
+  {
+    path: 'activity/activity-detail:activityId',
+    component: LoginComponent,
+    canActivate: [AuthGuard]
+  },
 ];

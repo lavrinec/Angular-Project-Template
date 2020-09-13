@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { SearchBar } from 'tns-core-modules/ui/search-bar';
 import { UserData } from '@src/app/components/Classes/UserData';
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,4 +43,8 @@ export class HelperService {
 
   }
   userData(): UserData { return new UserData(); }
+
+  getUserActivity( userid) {
+
+  }
 }

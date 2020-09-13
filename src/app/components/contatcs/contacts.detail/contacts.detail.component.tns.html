@@ -6,11 +6,17 @@
 <!--                ios.systemIcon="16" ios.position="right" android.position="popup">-->
 <!--    </ActionItem>-->
 
-    <NavigationButton icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>f060
+<!--    <NavigationButton icon="res://ic_arrow_back_black_24dp" (tap)="goBack()"></NavigationButton>-->
+    <NavigationButton android.systemIcon="ic_menu_back" (tap)="goBack()"></NavigationButton>
+
+
 <!--    <ActionItem icon="font://&#xf013;" class="fas" ios.position="right" (tap)="openSettings()"></ActionItem>-->
-<!--        <ActionItem text="delete" (tap)="goBack()"-->
-<!--                    ios.systemIcon="16" ios.position="right" android.position="popup">-->
-<!--        </ActionItem>-->
+        <ActionItem text="add" (tap)="goBack()"
+                    ios.systemIcon="16" ios.position="right" android.position="popup">
+        </ActionItem>
+    <ActionItem text="delete" (tap)="goBack()"
+                ios.systemIcon="16" ios.position="right" android.position="popup">
+    </ActionItem>
     <Label text="Contatcs"></Label>
 </ActionBar>
 

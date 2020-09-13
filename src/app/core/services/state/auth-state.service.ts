@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
-
 import { Router } from '@angular/router';
 import {TokenService} from '@src/app/shared/services/token.service';
 import {UserData} from '@src/app/components/Classes/UserData';
@@ -46,7 +44,9 @@ export class AuthStateService {
 
   getInsightToken() {
     const token = this.tokenService.getCookie('token');
-    console.log('getInsightToken', token);
+    const userData = this.tokenService.getCookie('userData');
+    // console.log('getInsightToken', token);
+    // console.log('userData: ', userData);
     if (token) {
       return token;
     } else {
@@ -56,7 +56,7 @@ export class AuthStateService {
 
   logout() {
     this.tokenService.deleteCookie('token');
-    void this.router.navigate(['login']);
+    void this.router.navigate(['login'], { replaceUrl: true });
   }
 
   public getIsLoggedIn(): boolean {

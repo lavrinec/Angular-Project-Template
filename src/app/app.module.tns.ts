@@ -22,6 +22,7 @@ import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
 import { RemindersComponent } from '@src/app/components/reminders/reminders.component';
 import { NativeScriptUIAutoCompleteTextViewModule } from 'nativescript-ui-autocomplete/angular';
 import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
+import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -38,7 +39,8 @@ import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
     LoginComponent,
     HideActionBarDirectiveTnsDirective,
     ContactsDetailComponent,
-    RemindersComponent
+    RemindersComponent,
+    ActivityDetailComponent
   ],
   imports: [
     NativeScriptModule,

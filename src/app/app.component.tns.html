@@ -8,7 +8,7 @@ https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawe
         <StackLayout row="0" class="nt-drawer__header">
             <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
             <Label id="name"  *ngIf="userData" class="nt-drawer__header-brand"  [text]="userData.Ime + ' ' + userData.Priimek" ></Label>
-            <Label id="username" *ngIf="userData" class="nt-drawer__header-footnote" [text]="userData.UserName"></Label>
+            <Label id="username" *ngIf="userData" class="nt-drawer__header-footnote" [text]="userData.userName"></Label>
         </StackLayout>
 
         <ScrollView row="1" class="nt-drawer__body">

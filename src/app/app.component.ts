@@ -52,6 +52,7 @@ export class AppComponent implements OnInit {
 
   logout(): void {
     this.authStateService.logout();
+    this.LSS.clearAll();
     this.helper.closeDrawer();
   }
 
@@ -60,11 +61,13 @@ export class AppComponent implements OnInit {
     this.authService.getUserData().subscribe((userData) => {
       this.LSS.store('userData', userData);
       this.authStateService.userData.next(userData);
+      this.userData = this.LSS.retrieve('userdata');
     });
   }
 
   kliknime() {
-    console.log(this.LSS.GetAll());
+    alert(this.LSS.retrieve('userdata').userName);
+    console.log(this.LSS.retrieve('userdata'));
   }
 
 }
