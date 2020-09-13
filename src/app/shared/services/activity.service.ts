@@ -26,4 +26,8 @@ export class ActivityService {
   deleteActivity(activityId) {
     return this.http.delete('/api/activity/' + activityId);
   }
+
+  getActivity(activityId) {
+    return this.http.get('/api/activity/vnext/' + activityId);
+  }
 }

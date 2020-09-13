@@ -1,5 +1,5 @@
 export class ContactDTO {
-  public id: null;
+  public id: number;
   public firstName: string;
   public lastName: string;
   public function: string;

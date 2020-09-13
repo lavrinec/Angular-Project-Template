@@ -7,6 +7,7 @@ import { LoginComponent } from '@src/app/components/login/login.component';
 import { NonAuthGuardService } from '@src/app/core/services/guards/non-auth-guard.service';
 import { AuthGuardService as AuthGuard } from '@src/app/core/services/guards/auth-guard.service';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
+import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
 
 export const routes: Routes = [
   {
@@ -40,8 +41,8 @@ export const routes: Routes = [
     canActivate: [NonAuthGuardService]
   },
   {
-    path: 'activity/activity-detail:activityId',
-    component: LoginComponent,
+    path: 'activity/activity-detail/:activityId',
+    component: ActivityDetailComponent,
     canActivate: [AuthGuard]
   },
 ];

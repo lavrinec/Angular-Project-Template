@@ -22,6 +22,8 @@ import { registerLocaleData } from '@angular/common';
 import localeSl from '@angular/common/locales/sl';
 import * as moment from 'moment';
 import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
+import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
+import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs.detail.edit/contacs.detail.edit.component';
 moment.locale('sl');
 
 registerLocaleData(localeSl, 'sl');
@@ -51,6 +53,8 @@ setCurrencyCode('EUR');
     IsReminderDue,
     SortReminders,
     ActivityDetailComponent,
+    ActivityDetailEditComponent,
+    ContacsDetailEditComponent,
   ],
   imports: [
     BrowserModule,

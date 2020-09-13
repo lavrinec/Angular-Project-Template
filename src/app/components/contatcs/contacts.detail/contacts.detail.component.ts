@@ -61,9 +61,6 @@ export class ContactsDetailComponent implements OnInit {
 
   }
 
-  onDrawerButtonTap(): void {
-    this.helper.onDrawerButtonTap();
-  }
   goBack(): void {
     this.helper.goBack();
   }

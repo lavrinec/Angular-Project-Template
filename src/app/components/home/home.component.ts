@@ -7,6 +7,7 @@ import { UserData } from '@src/app/components/Classes/UserData';
 import { ActivityService } from '@src/app/shared/services/activity.service';
 import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 import { CalendarDayViewEventSelectedData } from 'nativescript-ui-calendar';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 @Component({
@@ -31,18 +32,11 @@ export class HomeComponent implements OnInit {
    this.user = this.LSS.retrieve('userData');
     this.getUserActivity();
     console.log('aaaaa source calendar', this.eventSource);
-   // this.authStateService.userData.subscribe((userData: UserData) => {
-   //   console.log('aaaaaaaaaa 2', userData);
-   // });
   }
 
   onDrawerButtonTap(): void {
     this.helper.onDrawerButtonTap();
   }
-  // onDrawerButtonTap(): void {
-  //   const sideDrawer: RadSideDrawer = <RadSideDrawer>app.getRootView();
-  //   sideDrawer.showDrawer();
-  // }
 
   async getUserActivity() {
     this.eventSource = [];
@@ -56,6 +50,7 @@ export class HomeComponent implements OnInit {
   onDayViewEventSelected(args: CalendarDayViewEventSelectedData) {
    console.log('aaaa', args.eventData);
    const activityId = args.eventData['id'];
+   this.router.navigate(['activity/activity-detail/' + activityId]);
     // alert(
     //   {
     //     title: "Event Selected",

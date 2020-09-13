@@ -37,7 +37,7 @@
                     <e-column field="actionColumn" headerText="" textAlign="Center" [autoFit]="true" width="50px" [allowEditing]="false">
                         <ng-template #template let-data>
                             <div class="d-flex ml-2">
-                                <div style="cursor: pointer; color: #295fcb" (click)="openDetail(data.id)">
+                                <div style="cursor: pointer;  color: #295fcb" [routerLink]="data.id" (click)="openDetail(data.id)">
                                     <i class="fa fa-search"></i>
                                 </div>
                             </div>
