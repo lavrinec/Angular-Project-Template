@@ -16,6 +16,12 @@
 </ActionBar>
 
 <StackLayout class="nt-form"   justifyContent ="center" verticalAlignment="middle">
-    <TextField hint="Server URL Path..." autocorrect="false" [(ngModel)]="serverUrl" autocapitalizationType="none" class="" [disabled]="authInProgress"></TextField>
-    <Button text="Save settings" class="-primary -rounded-sm"  (tap)="saveSettings()" ></Button>
+    <RadDataForm tkExampleTitle tkToggleNavButton [source]="serverSettings" *ngIf="serverSettings">
+        <TKEntityProperty tkDataFormProperty name="protocol" displayName="Protokol:" index="0" [valuesProvider]="protocolList">
+            <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+        </TKEntityProperty>
+        <TKEntityProperty tkDataFormProperty name="server" displayName="Ime" index="1"></TKEntityProperty>
+    </RadDataForm>
+    <Button text="Save settings" class="-primary -rounded-sm"  (tap)="saveServerSettings()" ></Button>
 </StackLayout>
+

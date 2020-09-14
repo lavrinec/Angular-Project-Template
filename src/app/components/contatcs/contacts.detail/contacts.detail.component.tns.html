@@ -26,7 +26,7 @@
 
     <TKEntityProperty tkDataFormProperty name="firstName" displayName="Ime" index="1"></TKEntityProperty>
     <TKEntityProperty tkDataFormProperty name="lastName" displayName="Priimek" index="2"></TKEntityProperty>
-    <TKEntityProperty tkDataFormProperty name="function" displayName="Funkcija" index="3"></TKEntityProperty>
+<!--    <TKEntityProperty tkDataFormProperty name="function" displayName="Funkcija" index="3"></TKEntityProperty>-->
     <TKEntityProperty tkDataFormProperty name="birthday" displayName="Datum rojstva" index="4">
         <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
     </TKEntityProperty>
@@ -38,6 +38,9 @@
     </TKEntityProperty>
     <TKEntityProperty tkDataFormProperty name="suffix" displayName="Pripona" index="7" [valuesProvider]="pripona">
         <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
+    </TKEntityProperty>
+    <TKEntityProperty tkDataFormProperty name="function" displayName="Funkcija" index="8" autoCompleteDisplayMode="Plain" valuesProvider="New York, Washington, Los Angeles">
+        <TKPropertyEditor tkEntityPropertyEditor type="AutoCompleteInline"></TKPropertyEditor>
     </TKEntityProperty>
 
 <!--    <TKEntityProperty tkDataFormProperty name="age" displayName="Age" index="1">-->

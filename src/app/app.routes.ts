@@ -8,6 +8,9 @@ import { NonAuthGuardService } from '@src/app/core/services/guards/non-auth-guar
 import { AuthGuardService as AuthGuard } from '@src/app/core/services/guards/auth-guard.service';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
+import { SettingsGuardService } from '@src/app/core/services/guards/settings-guard.service';
+
+
 
 export const routes: Routes = [
   {
@@ -33,7 +36,7 @@ export const routes: Routes = [
   {
        path: 'settings',
        component: SettingsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [NonAuthGuardService],
   },
   {
       path: 'login',

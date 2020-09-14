@@ -5,7 +5,7 @@ import { AuthService } from '@src/app/core/services/api/auth.service';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
-import {LocalStorageService} from '@src/app/shared/services/local-storage.service';
+import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-login',

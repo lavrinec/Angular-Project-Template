@@ -34,6 +34,7 @@ export class ContactsDetailComponent implements OnInit {
           // });
           this.contactDTO.id = contact.id;
           this.contactDTO.firstName = contact.firstName;
+          this.contactDTO.function = contact.function;
           this.contactDTO.lastName = contact.lastName;
           if (contact.suffix) {
             this.contactDTO.suffix = contact.suffix;

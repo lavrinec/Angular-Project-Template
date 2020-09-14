@@ -20,7 +20,6 @@ import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
 import { RemindersComponent } from '@src/app/components/reminders/reminders.component';
-import { NativeScriptUIAutoCompleteTextViewModule } from 'nativescript-ui-autocomplete/angular';
 import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
 import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
 import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
@@ -44,7 +43,7 @@ import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs
     RemindersComponent,
     ActivityDetailComponent,
     ActivityDetailEditComponent,
-    ContacsDetailEditComponent
+    ContacsDetailEditComponent,
   ],
   imports: [
     NativeScriptModule,

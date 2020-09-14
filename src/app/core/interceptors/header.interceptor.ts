@@ -8,7 +8,7 @@ import { SettingsStateService } from '@src/app/core/services/state/settings-stat
 export class HeaderInterceptor implements HttpInterceptor {
   constructor(
     private settingsStateService: SettingsStateService,
-  ) {}
+  ) { this.settingsStateService.UpdateSettings();}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // setup header
