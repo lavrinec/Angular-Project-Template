@@ -30,7 +30,7 @@ export class SettingsStateService {
 
   }
 
-  UpdateSettings(){
+  UpdateSettings() {
     this.settings.connection.serverLocation = this.LSS.retrieve('server');
     this.settings.connection.protocol = this.LSS.retrieve('protocol');
     console.log('settings', this.settings);
