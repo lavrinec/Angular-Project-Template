@@ -26,7 +26,7 @@ export class ContactsService {
     return this.httpClient.get<Contact>('/api/person/contact/' + contactId);
   }
 
-  createContact(contact: object) {
+  createContact(contact: Contact) {
     return this.httpClient.post('/api/person/contact', contact);
   }
 
@@ -34,7 +34,7 @@ export class ContactsService {
     return this.httpClient.delete('/api/person/contact/' + contactId);
   }
 
-  patchContacts(patchArray: object[]) { // [..., {id: number, attrs...: any},...]
+  patchContacts(patchArray: object[]) {
     return this.httpClient.patch('/api/person/contact', patchArray);
   }
 }

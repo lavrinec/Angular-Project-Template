@@ -11,10 +11,8 @@
 
 
 <!--    <ActionItem icon="font://&#xf013;" class="fas" ios.position="right" (tap)="openSettings()"></ActionItem>-->
-        <ActionItem text="add" (tap)="add(contactDTO.Id)"
-                    ios.systemIcon="16" ios.position="right" android.position="popup">
-        </ActionItem>
-    <ActionItem text="edit" (tap)="edit(contactDTO.Id)"
+
+    <ActionItem text="Uredi" (tap)="edit(contactDTO.id)"
                 ios.systemIcon="16" ios.position="right" android.position="popup">
     </ActionItem>
     <Label text="Contatcs"></Label>
@@ -80,7 +78,7 @@
         </StackLayout>
         <Label text="Službeni telefon: " col="0" row="2" class="p-2 p-r-6" style="vertical-align: center; text-align: right; color: grey" *ngIf="contactDTO.businessNumber"></Label>
         <StackLayout orientation="horizontal" col="1" row="2" style="vertical-align: center;" *ngIf="contactDTO.businessNumber" >
-            <Button text="&#xf098;" class="fas" style="color: grey; vertical-align: center; font-size: 14px;" (tap)="helper.openUrl('tel:'+contactDTO.businessNumber)"></Button>
+            <Button text="&#xf098;" class="fas"  style="color: grey; vertical-align: center; font-size: 14px;" (tap)="helper.openUrl('tel:'+contactDTO.businessNumber)"></Button>
             <Label [text]="contactDTO.businessNumber" col="1" row="2"style=" vertical-align: center; font-size: 14px;"></Label>
         </StackLayout>
 

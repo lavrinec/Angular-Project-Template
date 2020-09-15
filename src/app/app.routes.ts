@@ -8,7 +8,9 @@ import { NonAuthGuardService } from '@src/app/core/services/guards/non-auth-guar
 import { AuthGuardService as AuthGuard } from '@src/app/core/services/guards/auth-guard.service';
 import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
-import { SettingsGuardService } from '@src/app/core/services/guards/settings-guard.service';
+import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs.detail.edit/contacs.detail.edit.component';
+import { ContacsDetailAddComponent } from '@src/app/components/contatcs/contacs.detail.add/contacs.detail.add.component';
+import { ActivityDetailAddComponent } from '@src/app/components/home/activity.detail.add/activity.detail.add.component';
 
 
 
@@ -34,6 +36,16 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'contacts-edit/:contactId',
+    component: ContacsDetailEditComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'contacts-add',
+    component: ContacsDetailAddComponent,
+    canActivate: [AuthGuard],
+  },
+  {
        path: 'settings',
        component: SettingsComponent,
     canActivate: [NonAuthGuardService],
@@ -46,6 +58,11 @@ export const routes: Routes = [
   {
     path: 'activity/activity-detail/:activityId',
     component: ActivityDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'activity-add',
+    component: ActivityDetailAddComponent,
     canActivate: [AuthGuard]
   },
 ];

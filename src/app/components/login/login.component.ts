@@ -13,8 +13,8 @@ import { LocalStorageService } from '@src/app/shared/services/local-storage.serv
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  username = 'MaticB';
-  password = 'Ma#tic20.19';
+  username = '';
+  password = '';
   authInProgress = false;
   authMessage = [];
   private unsubscribe$ = new Subject();

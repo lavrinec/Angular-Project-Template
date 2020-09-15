@@ -1,7 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '@src/app/components/Classes/Contact';
 import { ContactDTO } from '@src/app/components/Classes/ContactDTO';
 
@@ -22,6 +22,7 @@ export class ContactsDetailComponent implements OnInit {
     public helper: HelperService,
     private contactsService: ContactsService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
 
   ) {
     this.activatedRoute.params.subscribe(params => {
@@ -65,5 +66,10 @@ export class ContactsDetailComponent implements OnInit {
   callNumber(phone) {
     this.helper.openPhone(phone);
   }
+  edit(contactId) {
+    console.log('aaaa  contact edit', contactId);
+    this.router.navigate(['contacts-edit/' + contactId]);
+  }
+
 
 }

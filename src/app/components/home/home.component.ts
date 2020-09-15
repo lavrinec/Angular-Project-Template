@@ -59,5 +59,8 @@ export class HomeComponent implements OnInit {
     //   });
     // console.log('aaaaa onDayViewEventSelectedEvent', args);
   }
+  add() {
+    this.router.navigate(['activity-add']);
+  }
 }
 

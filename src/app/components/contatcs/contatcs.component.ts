@@ -11,6 +11,7 @@ import {
 } from '@syncfusion/ej2-angular-grids';
 import { Subscription } from 'rxjs';
 import { DialogUtility } from '@syncfusion/ej2-angular-popups';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contatcs',
@@ -33,7 +34,8 @@ export class ContatcsComponent implements OnInit {
 
   constructor(
     private helper: HelperService,
-    private contactsService: ContactsService
+    private contactsService: ContactsService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -112,6 +114,8 @@ export class ContatcsComponent implements OnInit {
 
     }
   }
-
+  add() {
+    this.router.navigate(['contacts-add']);
+  }
 
 }

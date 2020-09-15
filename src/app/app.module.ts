@@ -26,6 +26,8 @@ import * as moment from 'moment';
 import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
 import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
 import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs.detail.edit/contacs.detail.edit.component';
+import { ContacsDetailAddComponent } from '@src/app/components/contatcs/contacs.detail.add/contacs.detail.add.component';
+import { ActivityDetailAddComponent } from '@src/app/components/home/activity.detail.add/activity.detail.add.component';
 moment.locale('sl');
 
 registerLocaleData(localeSl, 'sl');
@@ -57,6 +59,8 @@ setCurrencyCode('EUR');
     ActivityDetailComponent,
     ActivityDetailEditComponent,
     ContacsDetailEditComponent,
+    ContacsDetailAddComponent,
+    ActivityDetailAddComponent
   ],
   imports: [
     BrowserModule,
