@@ -37,7 +37,7 @@ export class ContatcsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.search('');
+    // this.search('Marko Bezjak');
   }
   onDrawerButtonTap(): void {
     this.helper.onDrawerButtonTap();
@@ -112,4 +112,6 @@ export class ContatcsComponent implements OnInit {
 
     }
   }
+
+
 }

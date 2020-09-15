@@ -19,9 +19,9 @@ export class AuthService {
   ) {}
 
   login(username: string, password: string) {
-    const queryParams = '?username=' + username + '&password=' + password;
+    const queryParams = 'grant_type=password&username=' + username + '&password=' + password;
     const headers = new HttpHeaders().append('Content-Type', 'application/x-www-form-urlencoded');
-    return this.httpClient.post('/connect/token' + queryParams, null, { headers: headers})
+    return this.httpClient.post('/connect/token', queryParams, { headers: headers})
       .pipe(tap(
         response => {
           const expirationDate = moment().add(60, 'days').toDate();

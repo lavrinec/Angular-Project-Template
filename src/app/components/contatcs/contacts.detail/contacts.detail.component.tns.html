@@ -11,52 +11,89 @@
 
 
 <!--    <ActionItem icon="font://&#xf013;" class="fas" ios.position="right" (tap)="openSettings()"></ActionItem>-->
-        <ActionItem text="add" (tap)="goBack()"
+        <ActionItem text="add" (tap)="add(contactDTO.Id)"
                     ios.systemIcon="16" ios.position="right" android.position="popup">
         </ActionItem>
-    <ActionItem text="delete" (tap)="goBack()"
+    <ActionItem text="edit" (tap)="edit(contactDTO.Id)"
                 ios.systemIcon="16" ios.position="right" android.position="popup">
     </ActionItem>
     <Label text="Contatcs"></Label>
 </ActionBar>
 
-<!--<Button text="contacts.detail works!" class="btn btn-primary"></Button>-->
-<RadDataForm tkExampleTitle tkToggleNavButton [source]="contactDTO" *ngIf="contactDTO">
-    <TKEntityProperty tkDataFormProperty name="id" displayName="ID" index="0" hidden="true"></TKEntityProperty>
+<!--public firstName: string;-->
+<!--public lastName: string;-->
+<!--public function: string;-->
 
-    <TKEntityProperty tkDataFormProperty name="firstName" displayName="Ime" index="1"></TKEntityProperty>
-    <TKEntityProperty tkDataFormProperty name="lastName" displayName="Priimek" index="2"></TKEntityProperty>
-<!--    <TKEntityProperty tkDataFormProperty name="function" displayName="Funkcija" index="3"></TKEntityProperty>-->
-    <TKEntityProperty tkDataFormProperty name="birthday" displayName="Datum rojstva" index="4">
-        <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
-    </TKEntityProperty>
-    <TKEntityProperty tkDataFormProperty name="isActive" displayName="Aktiven" index="5">
-        <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
-    </TKEntityProperty>
-    <TKEntityProperty tkDataFormProperty name="prefix" displayName="Predpona" index="6" [valuesProvider]="predpona">
-        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
-    </TKEntityProperty>
-    <TKEntityProperty tkDataFormProperty name="suffix" displayName="Pripona" index="7" [valuesProvider]="pripona">
-        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
-    </TKEntityProperty>
-    <TKEntityProperty tkDataFormProperty name="function" displayName="Funkcija" index="8" autoCompleteDisplayMode="Plain" valuesProvider="New York, Washington, Los Angeles">
-        <TKPropertyEditor tkEntityPropertyEditor type="AutoCompleteInline"></TKPropertyEditor>
-    </TKEntityProperty>
+    <!--    <Label text="&#xf098;" class="fas" (tap)="callNumber('031656854')"></Label>-->
+    <!--    <Label class="fas" textWrap="true" (tap)="callNumber('031656854')" >-->
+    <!--        <FormattedString>-->
+    <!--            <Span text="&#xf098;" fontAttributes="Bold" ></Span> -->
+    <!--        </FormattedString>-->
+    <!--    </Label>-->
+<ScrollView orientation="vertical">
+    <GridLayout columns="100,auto" rows="100,auto" width="100%" height="100%" backgroundColor="lightgray" >
+<!--<StackLayout>-->
 
-<!--    <TKEntityProperty tkDataFormProperty name="age" displayName="Age" index="1">-->
-<!--        <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>-->
-<!--    </TKEntityProperty>-->
-<!--    <TKEntityProperty tkDataFormProperty name="email" displayName="E-Mail" index="2">-->
-<!--        <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>-->
-<!--    </TKEntityProperty>-->
-<!--    <TKEntityProperty tkDataFormProperty name="city" displayName="City" index="3" valuesProvider="New York, Washington, Los Angeles">-->
-<!--        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>-->
-<!--    </TKEntityProperty>-->
-<!--    <TKEntityProperty tkDataFormProperty name="street" displayName="Street Name" index="4"></TKEntityProperty>-->
-<!--    <TKEntityProperty tkDataFormProperty name="streetNumber" displayName="Street Number" index="5">-->
-<!--        <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>-->
-<!--    </TKEntityProperty>-->
-</RadDataForm>
-<!--<Button text="contacts.detail works!" class="btn btn-primary" (tap)="logProperty()"></Button>-->
+<!--    <Label [text]="contactDTO.firstName + ' ' + contactDTO.lastName" class="h1 text-center m-t-25 " *ngIf="contactDTO"></Label>-->
+<!--    <Label text="aaaaaaaaaaaaaaaaa" class="m-t-24" *ngIf="contactDTO" ></Label>-->
+<!--    <Button text="&#xf098;" class="fas fa-phone-square -primary " style="color:green;" (tap)="callNumber('031656854') " *ngIf="contactDTO"></Button>-->
+<!--    &lt;!&ndash; No styles applied &ndash;&gt;-->
+<!--    <Button text="Button"></Button>-->
+<!--    &lt;!&ndash; Using local CSS class &ndash;&gt;-->
+<!--    <Button text=".my-button" class="my-button"></Button>-->
+<!--    &lt;!&ndash; Using nativescript-theme-core CSS classes &ndash;&gt;-->
+<!--    <Button text="Button.-primary" class="-primary"></Button>-->
+<!--    <Button class="-primary">-->
+<!--        <FormattedString>-->
+<!--            <Span text="&#xf099;" class="fab"></Span>-->
+<!--            <Span text=" Button.-primary with icon"></Span>-->
+<!--        </FormattedString>-->
+<!--    </Button>-->
+<!--    <Button text="Button.-outline" class="-outline"></Button>-->
+<!--    <Button text="Button.-primary.-rounded-sm" class="-primary -rounded-sm"></Button>-->
+<!--    <Button text="Button.-primary.-rounded-lg" class="-primary -rounded-lg"></Button>-->
+<!--    <Button text="Button.-outline.-rounded-sm" class="-outline -rounded-sm"></Button>-->
+<!--    <Button text="Button.-outline.-rounded-lg" class="-outline -rounded-lg"></Button>-->
+<!--    <Button text="Button.-outline[isEnabled=false]" isEnabled="false" class="-outline"></Button>-->
+<!--    <Button text="Button.-primary[isEnabled=false]" isEnabled="false" class="-primary"></Button>-->
+
+    </GridLayout>
+<!--</StackLayout>-->
+
+    <GridLayout columns="auto, *" rows="50, auto, auto, auto, auto" width="100%" height="100%" backgroundColor="lightgray" *ngIf="contactDTO" style="font-size: 18px">
+<!--        <Label [text]="contactDTO.firstName + ' ' + contactDTO.lastName" col="0" row="0" colSpan="2" style="vertical-align: center; text-align: center; font-size: 16px"></Label>-->
+
+        <StackLayout orientation="horizontal" col="0" row="0" colSpan="2" style="horizontal-align: center; vertical-align: center;">
+            <Label text="&#xf2bd;" class="fas p-r-4" style="color: grey; vertical-align: center; font-size: 22px;"></Label>
+            <Label [text]="contactDTO.firstName + ' ' + contactDTO.lastName" style="font-size: 25px; vertical-align: center"></Label>
+        </StackLayout>
+
+        <Label text="Funkcija: " col="0" row="1" class="p-2 p-r-6" style="vertical-align: center; text-align: right; color: grey"></Label>
+        <Label [text]="contactDTO.function" col="1" row="1"></Label>
+
+        <Label text="Mobilni telefon: " col="0" row="2" class="p-2 p-r-6" style="vertical-align: center; text-align: right; color: grey"  *ngIf="contactDTO.mobileNumber"></Label>
+<!--        <Label [text]="contactDTO.mobilePhone" col="1" row="2"></Label>-->
+        <StackLayout orientation="horizontal" col="1" row="2" style="vertical-align: center;" *ngIf="contactDTO.mobileNumber">
+            <Button text="&#xf098;" class="fas p-r-4" style="color: grey; vertical-align: center; font-size: 14px;" (tap)="helper.openUrl('tel:'+contactDTO.mobileNumber)"></Button>
+<!--            <Label text="&#xf098;" class="fas p-r-4" style="color: grey; vertical-align: center; font-size: 14px;"></Label>-->
+            <Label [text]="contactDTO.mobileNumber" col="1" row="2" style=" vertical-align: center; font-size: 14px;"></Label>
+        </StackLayout>
+        <Label text="Službeni telefon: " col="0" row="2" class="p-2 p-r-6" style="vertical-align: center; text-align: right; color: grey" *ngIf="contactDTO.businessNumber"></Label>
+        <StackLayout orientation="horizontal" col="1" row="2" style="vertical-align: center;" *ngIf="contactDTO.businessNumber" >
+            <Button text="&#xf098;" class="fas" style="color: grey; vertical-align: center; font-size: 14px;" (tap)="helper.openUrl('tel:'+contactDTO.businessNumber)"></Button>
+            <Label [text]="contactDTO.businessNumber" col="1" row="2"style=" vertical-align: center; font-size: 14px;"></Label>
+        </StackLayout>
+
+        <Label text="Email: " col="0" row="3" class="p-2 p-r-6" style="vertical-align: center; text-align: right; color: grey"></Label>
+
+        <StackLayout orientation="horizontal" col="1" row="3" style="vertical-align: center;" *ngIf="contactDTO.email1">
+            <Button text="&#xf0e0;" class="fas" style="color: grey; vertical-align: center; font-size: 14px;" (tap)="helper.openUrl('mailto:'+contactDTO.email1)"></Button>
+            <Label [text]="contactDTO.email1" col="1" row="3"style=" vertical-align: center; font-size: 14px;"></Label>
+        </StackLayout>
 
 
+
+        <Label text="Naslov: " col="0" row="4" class="p-2 p-r-6" style="vertical-align: center; text-align: right; color: grey"></Label>
+        <Label [text]="contactDTO.businessAddress" col="1" row="4"style=" vertical-align: center; font-size: 14px;"></Label>
+    </GridLayout>
+</ScrollView>

@@ -47,4 +47,12 @@ export class HelperService {
   getUserActivity( userid) {
 
   }
+
+  openEmail(email) { }
+
+  openPhone(phone) {
+
+  }
+
+  openUrl(value: string) {}
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +19,7 @@ export class ContactsDetailComponent implements OnInit {
   pripona = ['',  'dipl.', 'dipl. inž.', 'univ. dipl. inž.', 'dr.', 'dr. med.', 'inž., ml.'];
 
   constructor(
-    private helper: HelperService,
+    public helper: HelperService,
     private contactsService: ContactsService,
     private activatedRoute: ActivatedRoute,
 
@@ -34,24 +34,13 @@ export class ContactsDetailComponent implements OnInit {
           // });
           this.contactDTO.id = contact.id;
           this.contactDTO.firstName = contact.firstName;
-          this.contactDTO.function = contact.function;
           this.contactDTO.lastName = contact.lastName;
-          if (contact.suffix) {
-            this.contactDTO.suffix = contact.suffix;
-          } else {
-            this.contactDTO.suffix = '';
-          }
-          if (contact.prefix) {
-            this.contactDTO.prefix = contact.prefix;
-          } else {
-            this.contactDTO.prefix = '';
-          }
-          this.contactDTO.isActive = contact.isActive;
-          if (contact.birthday) {
-            this.contactDTO.birthday = contact.birthday;
-          } else {
-            this.contactDTO.birthday = '';
-          }
+          this.contactDTO.function = contact.function;
+          this.contactDTO.mobileNumber = contact.mobileNumber;
+          this.contactDTO.businessNumber = contact.businessNumber;
+          this.contactDTO.businessAddress = contact.businessAddress;
+          this.contactDTO.email1 = contact.email1;
+
            console.log('aaa get contact', this.contactDTO);
         });
       }
@@ -67,6 +56,14 @@ export class ContactsDetailComponent implements OnInit {
   }
   logProperty() {
     console.log(this.contactDTO);
+  }
+
+  sendEmail(email) {
+    this.helper.openEmail(email);
+  }
+
+  callNumber(phone) {
+    this.helper.openPhone(phone);
   }
 
 }

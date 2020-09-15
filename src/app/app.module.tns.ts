@@ -17,7 +17,9 @@ import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.intercep
 import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor';
 import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
-import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
+import {
+  ContactsDetailComponent
+} from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
 import { RemindersComponent } from '@src/app/components/reminders/reminders.component';
 import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';

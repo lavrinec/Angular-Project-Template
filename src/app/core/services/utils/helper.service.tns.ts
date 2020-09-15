@@ -9,7 +9,7 @@ import { AuthService } from '@src/app/core/services/api/auth.service';
 import { Activity } from '@src/app/components/Classes/Activity';
 import { ActivityTns } from '@src/app/components/Classes/ActivityExtendsCalendarEvent';
 import { ActivityService } from '@src/app/shared/services/activity.service';
-
+import { openUrl } from 'tns-core-modules/utils/utils';
 
 @Injectable({
   providedIn: 'root'
@@ -91,5 +91,19 @@ export class HelperService implements OnInit {
         resolve(eventSource);
       });
     });
+  }
+
+openEmail(email) {
+    console.log(email);
+  openUrl('mailto:' + email);
+}
+
+  openPhone(phone) {
+    console.log(phone);
+    openUrl('tel:' + phone);
+  }
+
+  openUrl(value: string) {
+    openUrl(value);
   }
 }
