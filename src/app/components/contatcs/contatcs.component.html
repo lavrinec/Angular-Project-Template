@@ -1,7 +1,7 @@
 <div class="h-100 w-100">
     <div class="h-100 d-flex flex-column">
 
-        <div class="align-items-center p-2 d-flex" style="min-height: 42px">
+        <div class="align-items-center px-2 py-1 d-flex" style="min-height: 42px">
             <i class="fa fa-fw fa-address-book mr-2" style="color: darkgrey"></i>
             <span style="font-weight: 500">Kontaknte osebe</span>
             <div class="m-vertical-spacer mx-2" style="background-color: #00000022; width: 1px; height: 100%"></div>
@@ -18,9 +18,10 @@
 <!--                <span>{{contact.name}}</span>-->
 <!--            </div>-->
 <!--        </ng-container>-->
-        <div style="flex: 1">
+        <div style="flex: 1; height: 20%">
             <ejs-grid
                 #contactsGrid
+                height="100%"
                 [dataSource]="data"
                 [editSettings]="{allowEditing: true, mode: 'Batch', allowAdding: true, allowDeleting: true}"
                 [allowPaging]="true"

@@ -6,6 +6,8 @@ import { UserData } from '@src/app/components/Classes/UserData';
   providedIn: 'root'
 })
 export class HelperService {
+  static dateRegexISO8061 = new RegExp('/(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+)|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d)|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d)/');
+
 
   constructor() { }
 
@@ -55,4 +57,14 @@ export class HelperService {
   }
 
   openUrl(value: string) {}
+
+  parseDatesJSON(key: string, value) {
+    if (typeof value === 'string') {
+      const a = HelperService.dateRegexISO8061.test(value);
+      if (a) {
+        return new Date(new Date(value).toISOString().slice(0, -1));
+      }
+    }
+    return value;
+  }
 }

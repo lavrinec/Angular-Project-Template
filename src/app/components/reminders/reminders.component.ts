@@ -1,9 +1,23 @@
-import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
-import { EventSettingsModel, DayService, WeekService, WorkWeekService, MonthService, AgendaService, ResizeService, DragAndDropService, FieldModel } from '@syncfusion/ej2-angular-schedule';
+import {Component, OnInit, Pipe, PipeTransform, ViewChild} from '@angular/core';
+import {
+    EventSettingsModel,
+    DayService,
+    WeekService,
+    WorkWeekService,
+    MonthService,
+    AgendaService,
+    ResizeService,
+    DragAndDropService,
+    FieldModel,
+    ScheduleComponent
+} from '@syncfusion/ej2-angular-schedule';
 import { RemindersService } from '@src/app/core/services/api/reminders.service';
 import * as moment from 'moment';
 import {ActivityService} from '@src/app/shared/services/activity.service';
 import {AuthStateService} from '@src/app/core/services/state/auth-state.service';
+import {HelperService} from "@src/app/core/services/utils/helper.service";
+import {DialogComponent} from "@syncfusion/ej2-angular-popups";
+import {Subscription} from "rxjs";
 
 export class Reminder {
   id: number;
@@ -41,6 +55,7 @@ export class SortReminders implements PipeTransform {
   providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService, ResizeService, DragAndDropService]
 })
 export class RemindersComponent implements OnInit {
+    @ViewChild('scheduleComponent', {static: true}) scheduleComponentObj: ScheduleComponent;
   selectedDate: Date = new Date();
   fields: FieldModel = {
     id: 'id', startTime: {name: 'startDateTime'}, endTime: {name: 'endDateTime'}, subject: {name: 'remarks'},
@@ -49,6 +64,10 @@ export class RemindersComponent implements OnInit {
   eventSettings: EventSettingsModel = { dataSource: [], fields: this.fields };
   remindersData: object[] = [];
   activityData: object[] = [];
+
+  // edit
+    @ViewChild('activityDetailDialog', {static: true}) activityDetailDialogObj: DialogComponent;
+    activityInEdit: object;
 
   // reminders
     // delayOptions
@@ -76,6 +95,7 @@ export class RemindersComponent implements OnInit {
       private remindersService: RemindersService,
       private activityService: ActivityService,
       private authStateService: AuthStateService,
+      private helperService: HelperService,
   ) { }
 
   ngOnInit() {
@@ -86,7 +106,8 @@ export class RemindersComponent implements OnInit {
   getUserActivityData() {
       const userId = this.authStateService.userData.value.zaposleniId;
       this.activityService.getActivitiesByOwnerId(userId).subscribe((data: object[]) => {
-          console.log('aaaaaaaa', data);
+          data = JSON.parse(JSON.stringify(data), this.helperService.parseDatesJSON);
+          console.log('aaaaaaa', data);
           this.activityData = data;
           this.eventSettings.dataSource = this.activityData;
           this.eventSettings = {...this.eventSettings};
@@ -141,6 +162,8 @@ export class RemindersComponent implements OnInit {
       switch (args.requestType) {
           case 'eventCreated':
               args.addedRecords.forEach(record => {
+                  record.startDateTime = moment(record.startDateTime).subtract(record.startDateTime.getTimezoneOffset(), 'minutes').toDate();
+                  record.endDateTime = moment(record.endDateTime).subtract(record.endDateTime.getTimezoneOffset(), 'minutes').toDate();
                  this.activityService.createActivity(record).subscribe(() => {
                      this.getUserActivityData();
                  });
@@ -149,6 +172,8 @@ export class RemindersComponent implements OnInit {
           case 'eventChanged':
               const patchArray = [];
               args.changedRecords.forEach(record => {
+                  record.startDateTime = moment(record.startDateTime).subtract(record.startDateTime.getTimezoneOffset(), 'minutes').toDate();
+                  record.endDateTime = moment(record.endDateTime).subtract(record.endDateTime.getTimezoneOffset(), 'minutes').toDate();
                   const patchObj = {
                       id: record.id,
                       startDateTime: record.startDateTime,
@@ -170,5 +195,34 @@ export class RemindersComponent implements OnInit {
               });
               break;
       }
+    }
+
+    onPopupOpen(args) {
+      console.log('aaaaaaaa', args);
+      if (args.type === 'Editor') {
+          args.cancel = true;
+          this.activityInEdit = args.data;
+          this.activityDetailDialogObj.show();
+          const sub = this.activityDetailDialogObj.close.subscribe(args => {
+             console.log('aaaaa', args);
+              (sub as Subscription).unsubscribe();
+          });
+      }
+    }
+
+    activityEditSave() {
+      this.scheduleComponentObj.saveEvent(<{[key: string]: Object}>this.activityInEdit);
+      const patchObj = {
+        id: this.activityInEdit['id'],
+        remarks: this.activityInEdit['remarks'],
+        wholeDay: this.activityInEdit['wholeDay'],
+        isPrivate: this.activityInEdit['isPrivate'],
+        isAbsent: this.activityInEdit['isAbsent'],
+        finished: this.activityInEdit['finished'],
+        location: this.activityInEdit['location'],
+      };
+      this.activityService.patchActivity( [patchObj]).subscribe();
+      this.activityInEdit = null;
+      this.activityDetailDialogObj.hide();
     }
 }

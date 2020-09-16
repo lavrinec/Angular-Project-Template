@@ -15,6 +15,7 @@ import { openUrl } from 'tns-core-modules/utils/utils';
   providedIn: 'root'
 })
 export class HelperService implements OnInit {
+  dateRegexISO8061 = new RegExp('/(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d\\.\\d+)|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d)|(\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d)/');
 
   constructor(
     private router: Router,
@@ -105,5 +106,15 @@ openEmail(email) {
 
   openUrl(value: string) {
     openUrl(value);
+  }
+
+  parseDatesJSON(key: string, value) {
+    if (typeof value === 'string') {
+      const a = this.dateRegexISO8061.test(value);
+      if (a) {
+        return new Date(new Date(value).toISOString().slice(0, -1));
+      }
+    }
+    return value;
   }
 }
