@@ -40,7 +40,7 @@ export class HelperService implements OnInit {
     if (typeof value === 'string') {
       const a = HelperService.dateRegexISO8061.test(value);
       if (a) {
-        return new Date(value);
+        return new Date(new Date(value).toISOString().slice(0, -1));
       }
     }
     return value;

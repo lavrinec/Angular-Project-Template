@@ -16,7 +16,7 @@
 </ActionBar>
 
 <StackLayout class="nt-form"   justifyContent ="center" verticalAlignment="middle">
-    <RadDataForm tkExampleTitle tkToggleNavButton [source]="serverSettings" *ngIf="serverSettings">
+    <RadDataForm tkExampleTitle tkToggleNavButton [source]="serverSettings.connection" *ngIf="serverSettings">
         <TKEntityProperty tkDataFormProperty name="protocol" displayName="Protokol:" index="0" [valuesProvider]="protocolList">
             <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>
         </TKEntityProperty>

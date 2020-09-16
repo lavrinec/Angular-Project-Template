@@ -3,7 +3,8 @@ import { ContactDTO } from '@src/app/components/Classes/ContactDTO';
 import { Contact } from '@src/app/components/Classes/Contact';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-contacs.detail.edit',
@@ -20,7 +21,8 @@ export class ContacsDetailEditComponent implements OnInit {
     public helper: HelperService,
     private contactsService: ContactsService,
     private activatedRoute: ActivatedRoute,
-
+    private router: Router,
+    private location: Location
   ) {
     this.activatedRoute.params.subscribe(params => {
       if (params['contactId']) {
@@ -86,5 +88,12 @@ export class ContacsDetailEditComponent implements OnInit {
   }
   save() {
     console.log('aaaaaaaaa edited contact', this.contactDTO);
+
+    this.contactsService.patchContacts([this.contactDTO]).subscribe(() => {
+      this.location.back();
+    });
+
+
+
   }
 }

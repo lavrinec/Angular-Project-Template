@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { AuthService } from '@src/app/core/services/api/auth.service';
 import { AuthStateService } from '@src/app/core/services/state/auth-state.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserData } from '@src/app/components/Classes/UserData';
 import { ActivityService } from '@src/app/shared/services/activity.service';
 import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
     private helper: HelperService,
     private authStateService: AuthStateService,
     private router: Router,
-    private LSS: LocalStorageService
+    private LSS: LocalStorageService,
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -32,6 +33,11 @@ export class HomeComponent implements OnInit {
    this.user = this.LSS.retrieve('userData');
     this.getUserActivity();
     console.log('aaaaa source calendar', this.eventSource);
+    this.activatedRoute.url.subscribe((e) => {
+      if (this.eventSource) {
+        this.getUserActivity();
+      }
+    });
   }
 
   onDrawerButtonTap(): void {

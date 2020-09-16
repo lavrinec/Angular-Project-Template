@@ -21,7 +21,7 @@ import {
   ContactsDetailComponent
 } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
-import { RemindersComponent } from '@src/app/components/reminders/reminders.component';
+import { IsReminderDue, RemindersComponent, SortReminders } from '@src/app/components/reminders/reminders.component';
 import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
 import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
 import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
@@ -49,7 +49,9 @@ import { ActivityDetailAddComponent } from '@src/app/components/home/activity.de
     ActivityDetailEditComponent,
     ContacsDetailEditComponent,
     ContacsDetailAddComponent,
-    ActivityDetailAddComponent
+    ActivityDetailAddComponent,
+    IsReminderDue,
+    SortReminders,
   ],
   imports: [
     NativeScriptModule,

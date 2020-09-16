@@ -48,8 +48,8 @@ export class ContacsDetailAddComponent implements OnInit {
     this.contact.businessNumber = this.contactDTO.businessNumber;
     this.contact.businessAddress = this.contactDTO.businessAddress;
     this.contact.email1 = this.contactDTO.email1;
-    this.contactsService.createContact(this.contact).subscribe((r) => {
-      this.router.navigate(['contacts']);
+    this.contactsService.createContact(this.contact).subscribe((r: Contact) => {
+      this.router.navigate(['contacts', r.id]);
     });
   }
 }

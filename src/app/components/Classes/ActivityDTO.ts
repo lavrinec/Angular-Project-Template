@@ -5,10 +5,13 @@ export class ActivityDTO {
   public location: string;
   public ownerId: number;
   public startDateTime: Date;
+  public startDate: string = '';
+  public startTime: string = '';
+  public endDate: string = '';
+  public endTime: string = '';
   public endDateTime: Date;
-  public finished: true;
-  public wholeDay: true;
-  public isPrivate: true;
-  public isAbsent: true;
-  public isMeeting: true;
+  public finished: boolean;
+  public wholeDay: boolean;
+  public isPrivate: boolean;
+  public isAbsent: boolean;
 }

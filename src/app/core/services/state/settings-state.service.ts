@@ -16,7 +16,7 @@ export class SettingsStateService {
   settings: SettingsModel = {
     connection: {
       protocol: 'https',
-      serverLocation: 'demo.manto.net:4000',
+      serverLocation: 'insight.manto.net:9443',
       // clientLocation: window.location.hostname + '' + window.location.port
     }
   };
@@ -24,15 +24,14 @@ export class SettingsStateService {
   constructor(
     private LSS: LocalStorageService
   ) {
-    this.settings.connection.serverLocation = this.LSS.retrieve('server');
-    this.settings.connection.protocol = this.LSS.retrieve('protocol');
-    console.log('settings', this.settings);
-
+    // this.settings.connection.serverLocation = this.LSS.retrieve('server');
+    // this.settings.connection.protocol = this.LSS.retrieve('protocol');
+    // console.log('settings', this.settings);
   }
 
   UpdateSettings() {
-    this.settings.connection.serverLocation = this.LSS.retrieve('server');
-    this.settings.connection.protocol = this.LSS.retrieve('protocol');
-    console.log('settings', this.settings);
+    // this.settings.connection.serverLocation = this.LSS.retrieve('server');
+    // this.settings.connection.protocol = this.LSS.retrieve('protocol');
+    // console.log('settings', this.settings);
   }
 }

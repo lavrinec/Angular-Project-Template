@@ -13,7 +13,7 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add base url
-    this.settingsStateService.UpdateSettings();
+    // this.settingsStateService.UpdateSettings();
     const connectionSettings = this.settingsStateService.settings.connection;
     const baseServerUrl = connectionSettings.protocol + '://' + connectionSettings.serverLocation;
     const apiReq = req.clone({ url: `${baseServerUrl}${req.url}` });

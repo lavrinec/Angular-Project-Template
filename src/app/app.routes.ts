@@ -11,6 +11,7 @@ import { ActivityDetailComponent } from '@src/app/components/home/activity.detai
 import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs.detail.edit/contacs.detail.edit.component';
 import { ContacsDetailAddComponent } from '@src/app/components/contatcs/contacs.detail.add/contacs.detail.add.component';
 import { ActivityDetailAddComponent } from '@src/app/components/home/activity.detail.add/activity.detail.add.component';
+import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
 
 
 
@@ -58,6 +59,11 @@ export const routes: Routes = [
   {
     path: 'activity/activity-detail/:activityId',
     component: ActivityDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'activity/activity-edit/:activityId',
+    component: ActivityDetailEditComponent,
     canActivate: [AuthGuard]
   },
   {

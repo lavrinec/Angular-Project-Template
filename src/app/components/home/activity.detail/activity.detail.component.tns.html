@@ -11,55 +11,50 @@
 
 
     <!--    <ActionItem icon="font://&#xf013;" class="fas" ios.position="right" (tap)="openSettings()"></ActionItem>-->
-    <ActionItem text="add" (tap)="goBack()"
+    <ActionItem text="Uredi" (tap)="edit()"
                 ios.systemIcon="16" ios.position="right" android.position="popup">
     </ActionItem>
-    <ActionItem text="delete" (tap)="goBack()"
+    <ActionItem text="Izbriši" (tap)="delete()" class="fas"
                 ios.systemIcon="16" ios.position="right" android.position="popup">
     </ActionItem>
-    <Label text="Activity"></Label>
+    <Label text="Aktivnost"></Label>
 </ActionBar>
-<StackLayout>
-    <RadDataForm tkExampleTitle tkToggleNavButton [source]="activityDTO" *ngIf="activityDTO">
-            <TKEntityProperty tkDataFormProperty name="id" displayName="ID" index="0" hidden="true"></TKEntityProperty>
-
-        <TKEntityProperty tkDataFormProperty name="remarks" displayName="Ime" index="1"></TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="startDate" displayName="Datum začetka" index="3">
-            <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
-        </TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="startTime" displayName="Čas začetka" index="4">
-            <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
-        </TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="endDateTime" displayName="Datum konca" index="5">
-            <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
-        </TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="isAbsent" displayName="Odsotnost" index="6">
-            <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
-        </TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="wholeDay" displayName="Celodnevna" index="6">
-            <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
-        </TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="isPrivate" displayName="Zasebno" index="6">
-            <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
-        </TKEntityProperty>
-        <TKEntityProperty tkDataFormProperty name="finished" displayName="Dokončano" index="6">
-            <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
-        </TKEntityProperty>
-
-        <!--    <TKEntityProperty tkDataFormProperty name="age" displayName="Age" index="1">-->
-        <!--        <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>-->
-        <!--    </TKEntityProperty>-->
-        <!--    <TKEntityProperty tkDataFormProperty name="email" displayName="E-Mail" index="2">-->
-        <!--        <TKPropertyEditor tkEntityPropertyEditor type="Email"></TKPropertyEditor>-->
-        <!--    </TKEntityProperty>-->
-        <!--    <TKEntityProperty tkDataFormProperty name="city" displayName="City" index="3" valuesProvider="New York, Washington, Los Angeles">-->
-        <!--        <TKPropertyEditor tkEntityPropertyEditor type="Picker"></TKPropertyEditor>-->
-        <!--    </TKEntityProperty>-->
-        <!--    <TKEntityProperty tkDataFormProperty name="street" displayName="Street Name" index="4"></TKEntityProperty>-->
-        <!--    <TKEntityProperty tkDataFormProperty name="streetNumber" displayName="Street Number" index="5">-->
-        <!--        <TKPropertyEditor tkEntityPropertyEditor type="Number"></TKPropertyEditor>-->
-        <!--    </TKEntityProperty>-->
-    </RadDataForm>
-    <Button text="Edit" class="-primary -m-t 206" ></Button>
-</StackLayout>
-
+<ScrollView orientation="vertical">
+    <StackLayout>
+        <RadDataForm tkExampleTitle tkToggleNavButton [source]="activityDTO" *ngIf="activityDTO" [isReadOnly]="true">
+            <TKEntityProperty tkDataFormProperty name="id" displayName="ID" index="0" hidden="true">
+                <TKPropertyEditor tkEntityPropertyEditor type="number"></TKPropertyEditor>
+            </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="remarks" displayName="Ime" index="1">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="startDate" displayName="Datum začetka" index="2">
+                    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="startTime" displayName="Čas začetka" index="3">
+                    <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="endDate" displayName="Datum konca" index="4">
+                    <TKPropertyEditor tkEntityPropertyEditor type="DatePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="endTime" displayName="Čas konca" index="5">
+                    <TKPropertyEditor tkEntityPropertyEditor type="TimePicker"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="isAbsent" displayName="Odsotnost" index="6">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="wholeDay" displayName="Celodnevna" index="7">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="isPrivate" displayName="Zasebno" index="8" >
+                    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="finished" displayName="Dokončano" index="9">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Switch"></TKPropertyEditor>
+                </TKEntityProperty>
+                <TKEntityProperty tkDataFormProperty name="location" displayName="Lokacija" index="10">
+                    <TKPropertyEditor tkEntityPropertyEditor type="Text"></TKPropertyEditor>
+                </TKEntityProperty>
+        </RadDataForm>
+    </StackLayout>
+</ScrollView>
