@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   }
 
   kliknime() {
-    console.log(this.localStorageService.GetAll());
+    console.log(this.LSS.GetAll());
   }
 
 }

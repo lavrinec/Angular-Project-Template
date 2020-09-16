@@ -21,6 +21,7 @@ import {loadCldr, setCulture, setCurrencyCode} from '@syncfusion/ej2-base';
 import { registerLocaleData } from '@angular/common';
 import localeSl from '@angular/common/locales/sl';
 import * as moment from 'moment';
+import {DialogModule} from '@syncfusion/ej2-angular-popups';
 moment.locale('sl');
 
 registerLocaleData(localeSl, 'sl');
@@ -58,6 +59,7 @@ setCurrencyCode('EUR');
     GridModule,
     TextBoxModule,
     ScheduleModule,
+      DialogModule,
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

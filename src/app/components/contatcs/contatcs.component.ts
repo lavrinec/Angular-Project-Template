@@ -10,7 +10,7 @@ import {
   GridComponent
 } from '@syncfusion/ej2-angular-grids';
 import { Subscription } from 'rxjs';
-import { DialogUtility } from '@syncfusion/ej2-angular-popups';
+import {DialogComponent, DialogUtility} from '@syncfusion/ej2-angular-popups';
 
 @Component({
   selector: 'app-contatcs',
@@ -25,6 +25,10 @@ export class ContatcsComponent implements OnInit {
 
   // SF grid
   @ViewChild('contactsGrid', {static: true}) gridComponent: GridComponent;
+
+  // detail
+  contactInEdit: Contact;
+  @ViewChild('contactDetailDialog', {static: true}) contactDetailDialogObj: DialogComponent;
 
   // other
   loading = false;
@@ -72,6 +76,8 @@ export class ContatcsComponent implements OnInit {
   openDetail(contactId) {
     this.contactsService.getContact(contactId).subscribe((res: Contact) => {
       console.log('aaaaaa get contact', res);
+      this.contactInEdit = res;
+      this.contactDetailDialogObj.show();
     });
   }
 

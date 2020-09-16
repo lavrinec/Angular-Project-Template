@@ -25,6 +25,7 @@ export class LocalStorageService {
     private modifyName(name: string) {
         return 'manto-storage|' + name.toLowerCase();
     }
+
     GetAll() {
 
     }

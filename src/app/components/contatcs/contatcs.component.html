@@ -91,3 +91,32 @@
         </div>
     </div>
 </ng-template>
+
+<!-- contact detail -->
+<ejs-dialog
+    #contactDetailDialog
+    [showCloseIcon]="true"
+    [isModal]="true"
+    width="600px"
+    height="100%"
+    [position]="{ X: 'right', Y: 'top' }"
+    [visible]="false"
+    cssClass="m-contact-detail"
+    title="Podrobnosti"
+>
+    <ng-template #content>
+        <div style="border-top: 1px solid #e6e6e6">
+            <ng-container *ngIf="contactInEdit">
+                <div calss="p-2">
+                    <span>{{contactInEdit.firstName + ' ' + contactInEdit.lastName}}</span>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!contactInEdit">
+                <div calss="p-2">
+
+                </div>
+            </ng-container>
+
+        </div>
+    </ng-template>
+</ejs-dialog>
