@@ -5,7 +5,7 @@ import { AuthService } from '@src/app/core/services/api/auth.service';
 import { Subject } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
-import {LocalStorageService} from "@src/app/shared/services/local-storage.service";
+import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +13,8 @@ import {LocalStorageService} from "@src/app/shared/services/local-storage.servic
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  username = 'Sebastjanm';
-  password = 'MamaTepeRadiator123!';
+  username = '';
+  password = '';
   authInProgress = false;
   authMessage = [];
   private unsubscribe$ = new Subject();
@@ -36,15 +36,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login(username: string, password: string) {
-    console.log('login metoda');
-    console.log('username:' + username , 'password:' + password);
-
     this.authInProgress = true;
     this.authService.login(username, password)
       .pipe(takeUntil(this.unsubscribe$), finalize(() => { this.authInProgress = false; }))
       .subscribe(response => {
-        console.log('after subscribe');
-        this.redirectAfterLoginSuccess();
+        this.authService.getUserData().subscribe(() => {
+          this.redirectAfterLoginSuccess();
+        }, error => {
+          console.error('Uporabniških podatkov ni.');
+        });
       }, error => {
         // login failed
         alert('prijava nesupešna');
@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   redirectAfterLoginSuccess() {
     console.log('uspešen login');
-    this.setUserData();
     const redirectTo = this.authStateService.initialRedirectUrl;
     const queryParams = this.authStateService.initialQueryParams;
     if (redirectTo) {
@@ -64,12 +63,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       void this.router.navigate(['home'], { replaceUrl: true });
     }
   }
-
   setUserData() {
     // check if user logged in and fill userData.
-    this.authService.getUserData().subscribe((userData) => {
-      this.LSS.store('userData', userData);
-      this.authStateService.userData.next(userData);
-    });
+    this.authService.getUserData().subscribe();
   }
 }

@@ -10,6 +10,7 @@ import {
   GridComponent
 } from '@syncfusion/ej2-angular-grids';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import {DialogComponent, DialogUtility} from '@syncfusion/ej2-angular-popups';
 
 @Component({
@@ -37,11 +38,12 @@ export class ContatcsComponent implements OnInit {
 
   constructor(
     private helper: HelperService,
-    private contactsService: ContactsService
+    private contactsService: ContactsService,
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this.search('');
+    // this.search('Marko Bezjak');
   }
   onDrawerButtonTap(): void {
     this.helper.onDrawerButtonTap();
@@ -118,4 +120,8 @@ export class ContatcsComponent implements OnInit {
 
     }
   }
+  add() {
+    this.router.navigate(['contacts-add']);
+  }
+
 }

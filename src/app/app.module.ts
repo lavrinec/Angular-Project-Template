@@ -13,7 +13,9 @@ import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
 import { GridModule } from '@syncfusion/ej2-angular-grids';
-import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
+import {
+  ContactsDetailComponent
+} from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import {TextBoxModule} from '@syncfusion/ej2-angular-inputs';
 import {RemindersComponent, IsReminderDue, SortReminders} from '@src/app/components/reminders/reminders.component';
 import {ScheduleModule} from '@syncfusion/ej2-angular-schedule';
@@ -21,6 +23,11 @@ import {loadCldr, setCulture, setCurrencyCode} from '@syncfusion/ej2-base';
 import { registerLocaleData } from '@angular/common';
 import localeSl from '@angular/common/locales/sl';
 import * as moment from 'moment';
+import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
+import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
+import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs.detail.edit/contacs.detail.edit.component';
+import { ContacsDetailAddComponent } from '@src/app/components/contatcs/contacs.detail.add/contacs.detail.add.component';
+import { ActivityDetailAddComponent } from '@src/app/components/home/activity.detail.add/activity.detail.add.component';
 import {DialogModule} from '@syncfusion/ej2-angular-popups';
 moment.locale('sl');
 
@@ -50,6 +57,11 @@ setCurrencyCode('EUR');
     RemindersComponent,
     IsReminderDue,
     SortReminders,
+    ActivityDetailComponent,
+    ActivityDetailEditComponent,
+    ContacsDetailEditComponent,
+    ContacsDetailAddComponent,
+    ActivityDetailAddComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { HelperService } from '@src/app/core/services/utils/helper.service';
 import { ContactsService } from '@src/app/core/services/api/contacts.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Contact } from '@src/app/components/Classes/Contact';
 import { ContactDTO } from '@src/app/components/Classes/ContactDTO';
 
@@ -15,44 +15,23 @@ export class ContactsDetailComponent implements OnInit {
 
   contactDTO: ContactDTO;
   contact: Contact = new Contact();
-  predpona = ['', 'družina', 'g.', 'ga.', 'gdč.', 'mag.', 'dr'];
-  pripona = ['',  'dipl.', 'dipl. inž.', 'univ. dipl. inž.', 'dr.', 'dr. med.', 'inž., ml.'];
 
   constructor(
-    private helper: HelperService,
+    public helper: HelperService,
     private contactsService: ContactsService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
 
   ) {
     this.activatedRoute.params.subscribe(params => {
+      console.log('aaaaaaaaaa', params);
       if (params['contactId']) {
-        this.contactsService.getContact(Number(params['contactId'])).subscribe((contact: Contact) => {
-          this.contact = contact;
-          this.contactDTO = new ContactDTO();
-          // Object.keys(this.contactDTO).forEach(key => {
-          //   this.contactDTO[key] = contact[key];
-          // });
-          this.contactDTO.id = contact.id;
-          this.contactDTO.firstName = contact.firstName;
-          this.contactDTO.lastName = contact.lastName;
-          if (contact.suffix) {
-            this.contactDTO.suffix = contact.suffix;
-          } else {
-            this.contactDTO.suffix = '';
-          }
-          if (contact.prefix) {
-            this.contactDTO.prefix = contact.prefix;
-          } else {
-            this.contactDTO.prefix = '';
-          }
-          this.contactDTO.isActive = contact.isActive;
-          if (contact.birthday) {
-            this.contactDTO.birthday = contact.birthday;
-          } else {
-            this.contactDTO.birthday = '';
-          }
-           console.log('aaa get contact', this.contactDTO);
-        });
+        this.getContact(params['contactId']);
+      }
+    });
+    this.activatedRoute.url.subscribe((e) => {
+      if (this.contactDTO) {
+        this.getContact(this.contactDTO.id);
       }
     });
   }
@@ -61,9 +40,26 @@ export class ContactsDetailComponent implements OnInit {
 
   }
 
-  onDrawerButtonTap(): void {
-    this.helper.onDrawerButtonTap();
+  getContact(contactId: string|number) {
+    this.contactsService.getContact(Number(contactId)).subscribe((contact: Contact) => {
+      this.contact = contact;
+      this.contactDTO = new ContactDTO();
+      // Object.keys(this.contactDTO).forEach(key => {
+      //   this.contactDTO[key] = contact[key];
+      // });
+      this.contactDTO.id = contact.id;
+      this.contactDTO.firstName = contact.firstName;
+      this.contactDTO.lastName = contact.lastName;
+      this.contactDTO.function = contact.function;
+      this.contactDTO.mobileNumber = contact.mobileNumber;
+      this.contactDTO.businessNumber = contact.businessNumber;
+      this.contactDTO.businessAddress = contact.businessAddress;
+      this.contactDTO.email1 = contact.email1;
+
+      console.log('aaa get contact', this.contactDTO);
+    });
   }
+
   goBack(): void {
     this.helper.goBack();
   }
@@ -71,4 +67,15 @@ export class ContactsDetailComponent implements OnInit {
     console.log(this.contactDTO);
   }
 
+  sendEmail(email) {
+    this.helper.openEmail(email);
+  }
+
+  callNumber(phone) {
+    this.helper.openPhone(phone);
+  }
+  edit(contactId) {
+    console.log('aaaa  contact edit', contactId);
+    this.router.navigate(['contacts-edit/' + contactId]);
+  }
 }

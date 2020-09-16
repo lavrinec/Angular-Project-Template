@@ -3,4 +3,5 @@
     <TextField height="100px" hint="username" [(ngModel)]="username" autocorrect="false" autocapitalizationType="none" class="" [disabled]="authInProgress"></TextField>
     <TextField height="100px" hint="password" autocorrect="false" [(ngModel)]="password" autocapitalizationType="none" secure="true" class="" [disabled]="authInProgress"></TextField>
     <Button text="Sing In" class="-primary -rounded-sm"  (tap)="login(username,password)" [disabled]="authInProgress" ></Button>
+    <Button text="Settings" class="-primary -rounded-sm" nsRouterLink="/settings" ></Button>
 </StackLayout>

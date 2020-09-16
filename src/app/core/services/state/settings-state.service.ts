@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '@src/app/shared/services/local-storage.service';
 
 export class SettingsModel {
   connection: {
@@ -20,7 +21,17 @@ export class SettingsStateService {
     }
   };
 
-  constructor() {
-    console.log('settings', this.settings);
+  constructor(
+    private LSS: LocalStorageService
+  ) {
+    // this.settings.connection.serverLocation = this.LSS.retrieve('server');
+    // this.settings.connection.protocol = this.LSS.retrieve('protocol');
+    // console.log('settings', this.settings);
+  }
+
+  UpdateSettings() {
+    // this.settings.connection.serverLocation = this.LSS.retrieve('server');
+    // this.settings.connection.protocol = this.LSS.retrieve('protocol');
+    // console.log('settings', this.settings);
   }
 }

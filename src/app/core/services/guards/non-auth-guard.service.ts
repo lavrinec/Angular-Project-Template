@@ -15,6 +15,7 @@ export class NonAuthGuardService implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.authStateService.getIsLoggedIn()) {
       // navigate to login
+      // void this.router.navigate(['contacts']);
       void this.router.navigate(['home']);
       return false;
     }

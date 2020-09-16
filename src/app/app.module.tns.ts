@@ -17,11 +17,17 @@ import { BaseUrlInterceptor } from '@src/app/core/interceptors/base-url.intercep
 import { HeaderInterceptor } from '@src/app/core/interceptors/header.interceptor';
 import { NativeScriptUIListViewModule } from 'nativescript-ui-listview/angular';
 import { TokenInterceptor } from '@src/app/core/interceptors/token.interceptor';
-import { ContactsDetailComponent } from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
+import {
+  ContactsDetailComponent
+} from '@src/app/components/contatcs/contacts.detail/contacts.detail.component';
 import { NativeScriptUIDataFormModule } from 'nativescript-ui-dataform/angular';
-import { RemindersComponent } from '@src/app/components/reminders/reminders.component';
-import { NativeScriptUIAutoCompleteTextViewModule } from 'nativescript-ui-autocomplete/angular';
+import { IsReminderDue, RemindersComponent, SortReminders } from '@src/app/components/reminders/reminders.component';
 import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
+import { ActivityDetailComponent } from '@src/app/components/home/activity.detail/activity.detail.component';
+import { ActivityDetailEditComponent } from '@src/app/components/home/activity.detail.edit/activity.detail.edit.component';
+import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs.detail.edit/contacs.detail.edit.component';
+import { ContacsDetailAddComponent } from '@src/app/components/contatcs/contacs.detail.add/contacs.detail.add.component';
+import { ActivityDetailAddComponent } from '@src/app/components/home/activity.detail.add/activity.detail.add.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from 'nativescript-angular/forms';
@@ -38,7 +44,14 @@ import { NativeScriptUICalendarModule } from 'nativescript-ui-calendar/angular';
     LoginComponent,
     HideActionBarDirectiveTnsDirective,
     ContactsDetailComponent,
-    RemindersComponent
+    RemindersComponent,
+    ActivityDetailComponent,
+    ActivityDetailEditComponent,
+    ContacsDetailEditComponent,
+    ContacsDetailAddComponent,
+    ActivityDetailAddComponent,
+    IsReminderDue,
+    SortReminders,
   ],
   imports: [
     NativeScriptModule,

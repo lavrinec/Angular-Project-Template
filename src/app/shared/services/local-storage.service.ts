@@ -29,4 +29,8 @@ export class LocalStorageService {
     GetAll() {
 
     }
+
+    clearAll() {
+
+    }
 }
