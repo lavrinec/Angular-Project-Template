@@ -29,6 +29,7 @@ import { ContacsDetailEditComponent } from '@src/app/components/contatcs/contacs
 import { ContacsDetailAddComponent } from '@src/app/components/contatcs/contacs.detail.add/contacs.detail.add.component';
 import { ActivityDetailAddComponent } from '@src/app/components/home/activity.detail.add/activity.detail.add.component';
 import {DialogModule} from '@syncfusion/ej2-angular-popups';
+import {ButtonModule} from '@syncfusion/ej2-angular-buttons';
 moment.locale('sl');
 
 registerLocaleData(localeSl, 'sl');
@@ -72,6 +73,7 @@ setCurrencyCode('EUR');
     TextBoxModule,
     ScheduleModule,
       DialogModule,
+      ButtonModule,
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [

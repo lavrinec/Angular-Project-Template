@@ -37,7 +37,7 @@
                     <e-column field="actionColumn" headerText="" textAlign="Center" [autoFit]="true" width="50px" [allowEditing]="false">
                         <ng-template #template let-data>
                             <div class="d-flex ml-2">
-                                <div style="cursor: pointer;  color: #295fcb" [routerLink]="data.id" (click)="openDetail(data.id)">
+                                <div style="cursor: pointer;  color: #295fcb" (click)="openDetail(data.id)">
                                     <i class="fa fa-search"></i>
                                 </div>
                             </div>
@@ -103,16 +103,92 @@
     [visible]="false"
     cssClass="m-contact-detail"
     title="Podrobnosti"
+    style="max-height: 100% !important;"
 >
+    <ng-template #header>
+        <div class="d-flex align-items-center">
+            <i class="fa fa-fw fa-address-book mr-2" style="color: darkgrey"></i>
+            <div class="e-icon-settings" *ngIf="contactInEdit.id && contactInEdit.id > 0">Uredi kontaktno osebo</div>
+            <div class="e-icon-settings" *ngIf="!(contactInEdit.id && contactInEdit.id > 0)">Dodaj kontaktno osebo</div>
+        </div>
+    </ng-template>
     <ng-template #content>
         <div style="border-top: 1px solid #e6e6e6">
             <ng-container *ngIf="contactInEdit">
-                <div calss="p-2">
-                    <span>{{contactInEdit.firstName + ' ' + contactInEdit.lastName}}</span>
+                <div class="p-2 d-flex">
+                    <ejs-textbox
+                        [(value)]="contactInEdit.firstName"
+                        placeholder="Ime"
+                        floatLabelType="Always"
+                        cssClass="mr-1"
+                        style="flex: 1"
+                    ></ejs-textbox>
+                    <ejs-textbox
+                        [(value)]="contactInEdit.lastName"
+                        placeholder="Priimek"
+                        floatLabelType="Always"
+                        cssClass="ml-1"
+                        style="flex: 1"
+                    ></ejs-textbox>
+                </div>
+                <div class="p-2">
+                    <!-- mobile -->
+                    <div class="d-flex align-items-center">
+                        <a [href]="'tel:' + contactInEdit.mobileNumber" class="mr-2">
+                            <i class="fa fa-phone m-grid-prevent-edit" style="cursor: pointer;"></i>
+                        </a>
+                        <ejs-textbox
+                                [(value)]="contactInEdit.mobileNumber"
+                                placeholder="Mobilni"
+                                floatLabelType="Always"
+                                style="flex: 1"
+                        ></ejs-textbox>
+                    </div>
+                    <!-- business -->
+                    <div class="d-flex align-items-center">
+                        <a [href]="'tel:' + contactInEdit.businessNumber" class="mr-2">
+                            <i class="fa fa-phone m-grid-prevent-edit" style="cursor: pointer;"></i>
+                        </a>
+                        <ejs-textbox
+                                [(value)]="contactInEdit.businessNumber"
+                                placeholder="Službeni"
+                                floatLabelType="Always"
+                                style="flex: 1"
+                        ></ejs-textbox>
+                    </div>
+                    <!-- businessNumberCentral -->
+                    <div class="d-flex align-items-center">
+                        <a [href]="'tel:' + contactInEdit.businessNumberCentral" class="mr-2">
+                            <i class="fa fa-phone m-grid-prevent-edit" style="cursor: pointer;"></i>
+                        </a>
+                        <ejs-textbox
+                                [(value)]="contactInEdit.businessNumberCentral"
+                                placeholder="Službeni - centrala"
+                                floatLabelType="Always"
+                                style="flex: 1"
+                        ></ejs-textbox>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <div class="d-flex align-items-center">
+                        <a [href]="'mailto:' + contactInEdit.email1" class="mr-2">
+                            <i class="far fa-envelope m-grid-prevent-edit" style="cursor: pointer;"></i>
+                        </a>
+                        <ejs-textbox
+                                [(value)]="contactInEdit.email1"
+                                placeholder="Službeni - centrala"
+                                floatLabelType="Always"
+                                style="flex: 1"
+                        ></ejs-textbox>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <button ejs-button cssClass="w-100 e-primary" (click)="contactEditSave()" *ngIf="contactInEdit.id && contactInEdit.id > 0">Shrani</button>
+                    <button ejs-button cssClass="w-100 e-success" (click)="contactAddNew()" *ngIf="!(contactInEdit.id && contactInEdit.id > 0)">Dodaj</button>
                 </div>
             </ng-container>
             <ng-container *ngIf="!contactInEdit">
-                <div calss="p-2">
+                <div class="p-2">
 
                 </div>
             </ng-container>

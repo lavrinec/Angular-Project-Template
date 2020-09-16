@@ -71,6 +71,7 @@
     "@nativescript/schematics": "~1.0.0",
     "@nativescript/tslint-rules": "~0.0.5",
     "@syncfusion/ej2": "^18.2.48",
+    "@syncfusion/ej2-angular-buttons": "^18.2.58",
     "@syncfusion/ej2-angular-grids": "^18.2.48",
     "@syncfusion/ej2-angular-inputs": "^18.2.56",
     "@syncfusion/ej2-angular-popups": "^18.2.54",

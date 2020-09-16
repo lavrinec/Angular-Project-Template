@@ -76,6 +76,7 @@ export class ContatcsComponent implements OnInit {
   }
 
   openDetail(contactId) {
+    console.log('aaaaaaa');
     this.contactsService.getContact(contactId).subscribe((res: Contact) => {
       console.log('aaaaaa get contact', res);
       this.contactInEdit = res;
@@ -99,7 +100,8 @@ export class ContatcsComponent implements OnInit {
 
   onBeforeBatchAdd(args) {
     args.cancel = true;
-    // todo dat svoj dialog za dodajnje
+    this.contactInEdit = new Contact();
+    this.contactDetailDialogObj.show();
   }
   onBeforeBatchDelete(args, force = false) {
     if (!force) {
@@ -120,6 +122,36 @@ export class ContatcsComponent implements OnInit {
 
     }
   }
+
+  // editing
+  contactEditSave() {
+    this.contactsService.patchContacts([this.contactInEdit]).subscribe(() => {
+      this.contactDetailDialogObj.hide();
+      this.gridComponent.setRowData(this.contactInEdit.id, this.contactInEdit);
+      this.contactInEdit = null;
+    });
+  }
+
+  contactAddNew() {
+    if (!this.contactInEdit.firstName || this.contactInEdit.firstName.length === 0 ||
+        !this.contactInEdit.lastName || this.contactInEdit.lastName.length === 0
+    ) {
+      DialogUtility.alert({
+        title: 'Manjkajoči podakti',
+        content: 'Ime in priimek sta obvezna podatka.'
+      });
+      return;
+    }
+    this.contactsService.createContact(this.contactInEdit).subscribe((contact: object) => {
+      this.contactDetailDialogObj.hide();
+      this.contactInEdit = null;
+      // this.search(this.searchString);
+      const contactObj = Object.assign(new Contact(), contact);
+      this.data.splice(0, 0, contactObj);
+      this.data = [...this.data];
+    });
+  }
+
   add() {
     this.router.navigate(['contacts-add']);
   }
