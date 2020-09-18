@@ -16,7 +16,7 @@ export class SettingsStateService {
   settings: SettingsModel = {
     connection: {
       protocol: 'https',
-      serverLocation: 'demo.manto.net:4000',
+      serverLocation: 'insight.manto.net:9443',
       // clientLocation: window.location.hostname + '' + window.location.port
     }
   };

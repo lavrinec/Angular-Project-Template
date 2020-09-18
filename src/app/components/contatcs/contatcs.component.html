@@ -109,8 +109,8 @@
     <ng-template #header>
         <div class="d-flex align-items-center">
             <i class="fa fa-fw fa-address-book mr-2" style="color: darkgrey"></i>
-            <div class="e-icon-settings" *ngIf="contactInEdit.id && contactInEdit.id > 0">Uredi kontaktno osebo</div>
-            <div class="e-icon-settings" *ngIf="!(contactInEdit.id && contactInEdit.id > 0)">Dodaj kontaktno osebo</div>
+            <div class="e-icon-settings" *ngIf="contactInEdit && contactInEdit.id && contactInEdit.id > 0">Uredi kontaktno osebo</div>
+            <div class="e-icon-settings" *ngIf="!(contactInEdit && contactInEdit.id && contactInEdit.id > 0)">Dodaj kontaktno osebo</div>
         </div>
     </ng-template>
     <ng-template #content>

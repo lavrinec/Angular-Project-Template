@@ -22,7 +22,7 @@
     "postinstall": "npm run postinstall:electron && electron-builder install-app-deps",
     "postinstall:web": "node scripts/electron-build/postinstall-web",
     "postinstall:electron": "node scripts/electron-build/postinstall",
-    "electron:start": "npm-run-all -p electron:serve electron:start",
+    "electron:start": "npm-run-all -p electron:serve electron:open",
     "electron:serve-tsc": "tsc -p tsconfig.electron.json",
     "electron:serve": "npm run postinstall:electron && ng serve -c electronDev",
     "electron:open": "wait-on http-get://localhost:4200/ && npm run electron:serve-tsc && electron . --serve",
@@ -100,6 +100,6 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3",
-    "wait-on": "^5.0.0"
+    "wait-on": "^5.2.0"
   }
 }
