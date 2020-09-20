@@ -12,9 +12,6 @@ import { Contact } from '@src/app/components/Classes/Contact';
 })
 export class ContacsDetailAddComponent implements OnInit {
 
-  contact: Contact;
-  contactDTO: ContactDTO;
-
   constructor(
     public helper: HelperService,
     private contactsService: ContactsService,
@@ -31,6 +28,10 @@ export class ContacsDetailAddComponent implements OnInit {
           console.log('aaa get contact', this.contactDTO);
   }
 
+  contact: Contact;
+  contactDTO: ContactDTO;
+
+
   ngOnInit() {
 
   }
@@ -39,17 +40,32 @@ export class ContacsDetailAddComponent implements OnInit {
     this.helper.goBack();
   }
   save() {
-    console.log('aaaaaaaaa edited contact', this.contactDTO);
-    this.contact = new Contact();
-    this.contact.firstName = this.contactDTO.firstName;
-    this.contact.lastName = this.contactDTO.lastName;
-    this.contact.function = this.contactDTO.function;
-    this.contact.mobileNumber = this.contactDTO.mobileNumber;
-    this.contact.businessNumber = this.contactDTO.businessNumber;
-    this.contact.businessAddress = this.contactDTO.businessAddress;
-    this.contact.email1 = this.contactDTO.email1;
-    this.contactsService.createContact(this.contact).subscribe((r: Contact) => {
-      this.router.navigate(['contacts', r.id]);
-    });
+      // tslint:disable-next-line:max-line-length
+      if (this.contactDTO.firstName === '' && this.contactDTO.lastName === '' || this.contactDTO.firstName === '' || this.contactDTO.lastName === '') {
+      alert(
+            {
+              title: 'Opozorilo',
+              message: 'Ime in priimek sta obvezni podatek!',
+              okButtonText: 'Vredu'
+
+            });
+      } else {
+          console.log('aaaaaaaaa edited contact', this.contactDTO);
+          this.contact = new Contact();
+          this.contact.firstName = this.contactDTO.firstName;
+          this.contact.lastName = this.contactDTO.lastName;
+          this.contact.function = this.contactDTO.function;
+          this.contact.mobileNumber = this.contactDTO.mobileNumber;
+          this.contact.businessNumber = this.contactDTO.businessNumber;
+          this.contact.businessAddress = this.contactDTO.businessAddress;
+          this.contact.email1 = this.contactDTO.email1;
+          this.contactsService.createContact(this.contact).subscribe((r: Contact) => {
+              this.router.navigate(['contacts', r.id]);
+          });
+      }
+
+
   }
+
+
 }

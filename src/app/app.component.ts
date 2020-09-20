@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
   }
 
   onSideBarToggle(event) {
+    this.setUserData();
     this.helper.onDrawerButtonTap();
   }
 

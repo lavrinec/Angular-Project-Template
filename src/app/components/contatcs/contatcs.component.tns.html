@@ -16,7 +16,7 @@
     <ActionItem text="Dodaj kontaktno osebo" (tap)="add()" class="fas"
                 ios.systemIcon="16" ios.position="right" android.position="popup">
     </ActionItem>
-    <Label text="Contatcs"></Label>
+    <Label text="Kontaktne osebes"></Label>
 </ActionBar>
 
 <!--<GridLayout class="page__content">-->
@@ -26,7 +26,7 @@
 <!--</GridLayout>-->
 <GridLayout tkExampleTitle tkToggleNavButton>
     <StackLayout orientation="vertical">
-        <SearchBar  hint="Enter search term here ..."
+        <SearchBar  hint="Vpišite iskalni niz ..."
                     [text]="searchString"
                     (textChange)="onTextChange($event)"
                     (clear)="onClear($event)"

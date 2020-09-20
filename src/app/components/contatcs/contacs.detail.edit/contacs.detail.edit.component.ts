@@ -87,13 +87,20 @@ export class ContacsDetailEditComponent implements OnInit {
     this.helper.goBack();
   }
   save() {
-    console.log('aaaaaaaaa edited contact', this.contactDTO);
+    // tslint:disable-next-line:max-line-length
+    if (this.contactDTO.firstName === '' && this.contactDTO.lastName === '' || this.contactDTO.firstName === '' || this.contactDTO.lastName === '') {
+      alert(
+          {
+            title: 'Opozorilo',
+            message: 'Ime in priimek sta obvezni podatek!',
+            okButtonText: 'Vredu'
 
-    this.contactsService.patchContacts([this.contactDTO]).subscribe(() => {
-      this.location.back();
-    });
+          });
+    } else {
 
-
-
+      this.contactsService.patchContacts([this.contactDTO]).subscribe(() => {
+        this.location.back();
+      });
+    }
   }
 }
