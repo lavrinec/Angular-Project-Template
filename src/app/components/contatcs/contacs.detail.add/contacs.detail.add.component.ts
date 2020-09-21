@@ -50,7 +50,7 @@ export class ContacsDetailAddComponent implements OnInit {
 
             });
       } else {
-          console.log('aaaaaaaaa edited contact', this.contactDTO);
+          // console.log('aaaaaaaaa edited contact', this.contactDTO);
           this.contact = new Contact();
           this.contact.firstName = this.contactDTO.firstName;
           this.contact.lastName = this.contactDTO.lastName;
