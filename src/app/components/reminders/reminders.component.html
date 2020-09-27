@@ -13,87 +13,87 @@
                 (popupOpen)="onPopupOpen($event)"
             ></ejs-schedule>
         </div>
-        <div class="d-flex flex-column" style="width: 500px">
-            <div class="e-toolbar d-flex align-items-center px-2" style="height: 43px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); border: 1px solid rgba(0, 0, 0, 0.12);; border-bottom-width: 0px;">
-                <i class="fa fa-bell mx-2" style="color: darkgrey"></i>
-                <span class="e-tbar-btn-text" style="font-size: 14px;">OPOMNIKI</span>
-            </div>
-            <div style="flex: 1; overflow: auto;">
-                <ng-container *ngIf="remindersData && remindersData.length > 0">
-                    <ng-container *ngFor="let reminder of remindersData | sortReminders">
-                        <!-- reminder item -->
-<!--                        <div class="m-reminder-item p-2 m-1 d-flex justify-content-between" style="border: 1px solid green; border-radius: 3px;"-->
-<!--                             [style.background-color]="(reminder.startDateTime | isReminderDue) ? 'rgb(253 239 240)' : '#f1fff3'"-->
-<!--                             [style.border-color]="(reminder.startDateTime | isReminderDue) ? 'red' : 'green'"-->
+<!--        <div class="d-flex flex-column" style="width: 500px">-->
+<!--            <div class="e-toolbar d-flex align-items-center px-2" style="height: 43px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); border: 1px solid rgba(0, 0, 0, 0.12);; border-bottom-width: 0px;">-->
+<!--                <i class="fa fa-bell mx-2" style="color: darkgrey"></i>-->
+<!--                <span class="e-tbar-btn-text" style="font-size: 14px;">OPOMNIKI</span>-->
+<!--            </div>-->
+<!--            <div style="flex: 1; overflow: auto;">-->
+<!--                <ng-container *ngIf="remindersData && remindersData.length > 0">-->
+<!--                    <ng-container *ngFor="let reminder of remindersData | sortReminders">-->
+<!--                        &lt;!&ndash; reminder item &ndash;&gt;-->
+<!--&lt;!&ndash;                        <div class="m-reminder-item p-2 m-1 d-flex justify-content-between" style="border: 1px solid green; border-radius: 3px;"&ndash;&gt;-->
+<!--&lt;!&ndash;                             [style.background-color]="(reminder.startDateTime | isReminderDue) ? 'rgb(253 239 240)' : '#f1fff3'"&ndash;&gt;-->
+<!--&lt;!&ndash;                             [style.border-color]="(reminder.startDateTime | isReminderDue) ? 'red' : 'green'"&ndash;&gt;-->
+<!--&lt;!&ndash;                        >&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div style="flex: 1">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div style="font-size: 10px; color: darkgrey;">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <i class="fa fa-clock mr-1" style="color: #cacaca"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <span style="font-size: 11px">{{reminder.startDateTime | date: 'dd. MM. yyyy HH:mm'}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <span style="font-weight: 500">{{reminder.name}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <div class="d-flex align-items-center justify-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                <i class="fa fa-bell-slash m-dismiss-reminder" style="color: #999999; display: none; cursor: pointer"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                        <div class="m-reminder-item p-2 m-2" style="border: 1px solid green; border-radius: 3px;"-->
+<!--                             [style.background-color]="(reminder['reminderDateTime'] | isReminderDue) ? 'rgb(253 239 240)' : '#f1fff3'"-->
+<!--                             [style.border-color]="(reminder['reminderDateTime'] | isReminderDue) ? 'red' : 'green'"-->
 <!--                        >-->
-<!--                            <div style="flex: 1">-->
-<!--                                <div style="font-size: 10px; color: darkgrey;">-->
-<!--                                    <i class="fa fa-clock mr-1" style="color: #cacaca"></i>-->
-<!--                                    <span style="font-size: 11px">{{reminder.startDateTime | date: 'dd. MM. yyyy HH:mm'}}</span>-->
+<!--                            <div class="d-flex align-items-center">-->
+<!--                                <i class="fa fa-lg fa-bell" aria-hidden="true" style="color: #d6bf12"></i>-->
+<!--                                &lt;!&ndash;contents&ndash;&gt;-->
+<!--                                <div class="m-reminder-contents ml-3 w-100 d-flex flex-column">-->
+<!--                                    <div class="w-100">-->
+<!--                                        <div class="m-reminder-text">-->
+<!--                                            <span>{{reminder['name']}}</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="w-100">-->
+<!--                                        <div class="d-flex flex-row-reverse">-->
+<!--                                            <small class="m-reminder-overdue">-->
+<!--                                                {{this.moment(reminder['reminderDateTime']).fromNow()}}-->
+<!--                                            </small>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 <!--                                </div>-->
-<!--                                <div>-->
-<!--                                    <span style="font-weight: 500">{{reminder.name}}</span>-->
+<!--                                &lt;!&ndash;reminder settings&ndash;&gt;-->
+<!--                                <div class="m-reminder-settings" style="display: none">-->
+<!--                                    <div class="d-flex">-->
+<!--&lt;!&ndash;                                        <i class="fa fa-search ml-3" aria-hidden="true" (click)="openDetail(reminder)" title="Odpri nalogo"></i>&ndash;&gt;-->
+<!--                                        <i class="fa fa-bell-slash ml-3" aria-hidden="true" (click)="dismissReminder(reminder)" title="Opusti opomnik"></i>-->
+<!--                                    </div>-->
 <!--                                </div>-->
 <!--                            </div>-->
-<!--                            <div class="d-flex align-items-center justify-content-center">-->
-<!--                                <i class="fa fa-bell-slash m-dismiss-reminder" style="color: #999999; display: none; cursor: pointer"></i>-->
+<!--                            &lt;!&ndash; offset reminder / delay reminder &ndash;&gt;-->
+<!--                            <div class="m-reminder-offset-options" style="display: none">-->
+<!--                                <div class="mt-1 pt-1" style="border-top: 1px solid lightgrey; font-size: 11px">-->
+<!--                                    <span class="mr-1">Znova opomni čez:</span>-->
+<!--                                    <ng-container *ngFor="let offsetOption of offsetOptions">-->
+<!--                                        <span-->
+<!--                                                class="badge badge-warning mr-1 bg-white text-black-70 border border-dark-50"-->
+<!--                                                style="font-size: 11px; font-weight: normal; cursor: pointer"-->
+<!--                                                (click)="offsetReminder(reminder, offsetOption)"-->
+<!--                                        >-->
+<!--                                          {{offsetOption['text']}}-->
+<!--                                        </span>-->
+<!--                                    </ng-container>-->
+<!--                                </div>-->
 <!--                            </div>-->
 <!--                        </div>-->
-                        <div class="m-reminder-item p-2 m-2" style="border: 1px solid green; border-radius: 3px;"
-                             [style.background-color]="(reminder['reminderDateTime'] | isReminderDue) ? 'rgb(253 239 240)' : '#f1fff3'"
-                             [style.border-color]="(reminder['reminderDateTime'] | isReminderDue) ? 'red' : 'green'"
-                        >
-                            <div class="d-flex align-items-center">
-                                <i class="fa fa-lg fa-bell" aria-hidden="true" style="color: #d6bf12"></i>
-                                <!--contents-->
-                                <div class="m-reminder-contents ml-3 w-100 d-flex flex-column">
-                                    <div class="w-100">
-                                        <div class="m-reminder-text">
-                                            <span>{{reminder['name']}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="w-100">
-                                        <div class="d-flex flex-row-reverse">
-                                            <small class="m-reminder-overdue">
-                                                {{this.moment(reminder['reminderDateTime']).fromNow()}}
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--reminder settings-->
-                                <div class="m-reminder-settings" style="display: none">
-                                    <div class="d-flex">
-<!--                                        <i class="fa fa-search ml-3" aria-hidden="true" (click)="openDetail(reminder)" title="Odpri nalogo"></i>-->
-                                        <i class="fa fa-bell-slash ml-3" aria-hidden="true" (click)="dismissReminder(reminder)" title="Opusti opomnik"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- offset reminder / delay reminder -->
-                            <div class="m-reminder-offset-options" style="display: none">
-                                <div class="mt-1 pt-1" style="border-top: 1px solid lightgrey; font-size: 11px">
-                                    <span class="mr-1">Znova opomni čez:</span>
-                                    <ng-container *ngFor="let offsetOption of offsetOptions">
-                                        <span
-                                                class="badge badge-warning mr-1 bg-white text-black-70 border border-dark-50"
-                                                style="font-size: 11px; font-weight: normal; cursor: pointer"
-                                                (click)="offsetReminder(reminder, offsetOption)"
-                                        >
-                                          {{offsetOption['text']}}
-                                        </span>
-                                    </ng-container>
-                                </div>
-                            </div>
-                        </div>
-                    </ng-container>
-                </ng-container>
+<!--                    </ng-container>-->
+<!--                </ng-container>-->
 
-                <ng-container *ngIf="!(remindersData && remindersData.length > 0)">
-                    <div class="p-2">
-                        <span style="color: #999999; font-size: 12px; font-weight: 500">Brez opomnikov</span>
-                    </div>
-                </ng-container>
-            </div>
-        </div>
+<!--                <ng-container *ngIf="!(remindersData && remindersData.length > 0)">-->
+<!--                    <div class="p-2">-->
+<!--                        <span style="color: #999999; font-size: 12px; font-weight: 500">Brez opomnikov</span>-->
+<!--                    </div>-->
+<!--                </ng-container>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 
