@@ -91,25 +91,33 @@ export class ActivityDetailEditComponent implements OnInit {
 
 
   save() {
-    this.activity.id = this.activityDTO.id;
-    this.activity.remarks = this.activityDTO.remarks;
+    const text = 'Naziv aktivnosti je obvezen podatek!';
+    if (this.activityDTO.remarks === '') {
+      alert(
+        {
+          title: 'Opozorilo',
+          message: text,
+          okButtonText: 'Vredu'
 
-    this.activity.isAbsent = this.activityDTO.isAbsent;
-    this.activity.wholeDay = this.activityDTO.wholeDay;
-    this.activity.isPrivate = this.activityDTO.isPrivate;
-    this.activity.finished = this.activityDTO.finished;
-    this.activity.location = this.activityDTO.location;
+        });
+    } else {
 
-    // patch dates
-    this.activity.startDateTime = this.combineDateTime(this.activityDTO.startDate, this.activityDTO.startTime);
-    this.activity.endDateTime = this.combineDateTime(this.activityDTO.endDate, this.activityDTO.endTime);
-    // this.activity.startDateTime = new Date(this.activity.startDateTime.toISOString().slice(0, -1));
-    // this.activity.endDateTime = new Date(this.activity.endDateTime.toISOString().slice(0, -1));
+      this.activity.id = this.activityDTO.id;
+      this.activity.remarks = this.activityDTO.remarks;
 
+      this.activity.isAbsent = this.activityDTO.isAbsent;
+      this.activity.wholeDay = this.activityDTO.wholeDay;
+      this.activity.isPrivate = this.activityDTO.isPrivate;
+      this.activity.finished = this.activityDTO.finished;
+      this.activity.location = this.activityDTO.location;
 
-    this.activityService.patchActivity([this.activity]).subscribe(() => {
-      this.location.back();
-    });
+      // patch dates
+      this.activity.startDateTime = this.combineDateTime(this.activityDTO.startDate, this.activityDTO.startTime);
+      this.activity.endDateTime = this.combineDateTime(this.activityDTO.endDate, this.activityDTO.endTime);
 
+      this.activityService.patchActivity([this.activity]).subscribe(() => {
+        this.location.back();
+      });
+    }
   }
 }

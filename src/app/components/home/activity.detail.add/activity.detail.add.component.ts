@@ -71,24 +71,33 @@ export class ActivityDetailAddComponent implements OnInit {
   }
 
   save() {
-    console.log('aaaaaaaaa edited contact', this.activityDTO);
-    this.activity = new Activity();
-    this.activity.duration = this.activityDTO.duration;
-    this.activity.remarks = this.activityDTO.remarks;
-    this.activity.ownerId = this.LSS.retrieve('userData').zaposleniId;
-    // TODO: POPRAVI da se bo ta DATETIME prav shranjeval in duration, reči Ninotu
-    this.activity.finished = this.activityDTO.finished;
-    this.activity.wholeDay = this.activityDTO.wholeDay;
-    this.activity.isPrivate = this.activityDTO.isAbsent;
+    const text = 'Naziv aktivnosti je obvezen podatek!';
 
-    this.activity.startDateTime = this.combineDateTime(this.activityDTO.startDate, this.activityDTO.startTime);
-    this.activity.endDateTime = this.combineDateTime(this.activityDTO.endDate, this.activityDTO.endTime);
-    // this.activity.startDateTime = new Date(this.activity.startDateTime.toISOString().slice(0, -1));
-    // this.activity.endDateTime = new Date(this.activity.endDateTime.toISOString().slice(0, -1));
+    if (this.activityDTO.remarks === '') {
+      alert(
+        {
+          title: 'Opozorilo',
+          message: text,
+          okButtonText: 'Vredu'
 
-    this.activityService.createActivity(this.activity).subscribe((r) => {
-      this.location.back();
-    });
+        });
+    } else {
+
+      this.activity = new Activity();
+      this.activity.duration = this.activityDTO.duration;
+      this.activity.remarks = this.activityDTO.remarks;
+      this.activity.ownerId = this.LSS.retrieve('userData').zaposleniId;
+      this.activity.finished = this.activityDTO.finished;
+      this.activity.wholeDay = this.activityDTO.wholeDay;
+      this.activity.isPrivate = this.activityDTO.isAbsent;
+
+      this.activity.startDateTime = this.combineDateTime(this.activityDTO.startDate, this.activityDTO.startTime);
+      this.activity.endDateTime = this.combineDateTime(this.activityDTO.endDate, this.activityDTO.endTime);
+
+      this.activityService.createActivity(this.activity).subscribe((r) => {
+        this.location.back();
+      });
+    }
   }
 
 }
