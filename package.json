@@ -39,7 +39,7 @@
     "@angular/cli": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",
     "@nativescript/tslint-rules": "~0.0.5",
-    "@nativescript/webpack": "^2.0.0-rc.1",
+    "@nativescript/webpack": "^5.0.14",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
